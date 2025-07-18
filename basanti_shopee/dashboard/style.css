@@ -102,13 +102,6 @@
           white-space: nowrap;
         }
 
-        .branding img {
-          width: 40px;
-          height: 40px;
-          object-fit: cover;
-          border-radius: 50%;
-        }
-
         .hr-line {
           margin: 0 1rem;
           height: 1px;
@@ -128,11 +121,12 @@
 
         .user-avatar {
           color: var(--color-white);
-          font-size: 1.75rem;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
           flex-shrink: 0;
-        }
-
-        .user-info {
+          border: 2px solid var(--color-yellow);
           transition: all var(--transition-time) ease;
           overflow: hidden;
         }
@@ -160,10 +154,24 @@
         }
 
 
-        /* Mobile responsiveness */
-        @media (max-width: 991.98px) {
+        /* Tablet-specific sidebar behavior */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          .sidebar-nav {
+            width: 30% !important;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            transition: transform var(--transition-time) ease;
+            transform: translateX(-100%);
+          }
+
           .sidebar-nav:not(.collapsed) {
-            width: 100%;
+            width: 60%;
+            transform: translateX(0);
+          }
+
+          .sidebar-nav.collapsed {
+            transform: translateX(-100%);
           }
 
           .user-profile-section {
@@ -850,5 +858,207 @@
 
           .product-details {
             padding-left: 10px !important;
+          }
+
+        }
+
+        /* ===========================================
+          PROFILE SECTION STYLES FOR SETTINGS PAGE
+          =========================================== */
+        /* Profile Section Styles */
+        .profile-container {
+          padding: 1.5rem 2rem;
+        }
+
+        .profile-heading {
+          color: var(--color-navy);
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+        }
+
+        /* Left Column Styles */
+        .profile-card {
+          background-color: var(--color-white);
+          border: 1px solid rgba(11, 31, 63, 0.1);
+          border-radius: 8px;
+          padding: 1.5rem;
+          height: 100%;
+          box-shadow: 0 2px 8px rgba(11, 31, 63, 0.05);
+        }
+
+        .profile-photo-section {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .profile-photo-container {
+          position: relative;
+          display: inline-block;
+        }
+
+        .profile-photo {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+
+        .profile-upload-btn {
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          width: 36px;
+          height: 36px;
+          background-color: var(--color-blue);
+          color: var(--color-white);
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all var(--transition-time);
+        }
+
+        .profile-upload-btn:hover {
+          background-color: var(--color-navy);
+        }
+
+        .upload-instruction {
+          font-size: 0.9rem;
+          color: var(--color-navy);
+          opacity: 0.7;
+          margin-bottom: 0.25rem;
+        }
+
+        .file-status {
+          font-size: 0.8rem;
+          color: var(--color-navy);
+          opacity: 0.5;
+          font-style: italic;
+        }
+
+        /* Document Upload Styles */
+        .upload-label {
+          font-weight: 600;
+          color: var(--color-navy);
+          display: block;
+          margin-bottom: 0.75rem;
+          font-size: 0.95rem;
+        }
+
+        .upload-control {
+          display: flex;
+          margin-bottom: 0.5rem;
+        }
+
+        .upload-control .form-control {
+          border: 1px solid rgba(11, 31, 63, 0.2);
+          border-right: none;
+          border-radius: 6px 0 0 6px;
+        }
+
+        .upload-button {
+          background-color: var(--color-white);
+          border: 1px solid rgba(11, 31, 63, 0.2);
+          border-left: none;
+          border-radius: 0 6px 6px 0;
+          padding: 0 1rem;
+          color: var(--color-blue);
+          transition: all var(--transition-time);
+        }
+
+        .upload-button:hover {
+          background-color: rgba(57, 117, 217, 0.1);
+        }
+
+        .upload-note {
+          font-size: 0.75rem;
+          color: var(--color-navy);
+          opacity: 0.5;
+          margin-top: 0.25rem;
+        }
+
+        /* Right Column Styles */
+        .profile-info-card {
+          background-color: var(--color-white);
+          border: 1px solid rgba(11, 31, 63, 0.1);
+          border-radius: 8px;
+          padding: 1.5rem;
+          height: 100%;
+          box-shadow: 0 2px 8px rgba(11, 31, 63, 0.05);
+        }
+
+        /* Form Styles */
+        .form-group {
+          margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+          font-weight: 600;
+          color: var(--color-navy);
+          display: block;
+          margin-bottom: 0.5rem;
+          font-size: 0.95rem;
+        }
+
+        .input-group-text {
+          background-color: rgba(57, 117, 217, 0.1);
+          color: var(--color-blue);
+          border: 1px solid rgba(11, 31, 63, 0.1);
+          border-right: none;
+        }
+
+        .form-control {
+          border: 1px solid rgba(11, 31, 63, 0.2);
+          border-radius: 6px;
+          padding: 0.75rem 1rem;
+          transition: border var(--transition-time);
+          color: var(--color-navy);
+        }
+
+        .form-control:focus {
+          border-color: var(--color-blue);
+          box-shadow: 0 0 0 0.2rem rgba(57, 117, 217, 0.1);
+        }
+
+        /* Submit Button */
+        .form-actions {
+          text-align: right;
+          margin-top: 2rem;
+        }
+
+        .submit-btn {
+          background-color: var(--color-blue);
+          color: var(--color-white);
+          border: none;
+          border-radius: 6px;
+          padding: 0.75rem 2rem;
+          font-weight: 600;
+          transition: all var(--transition-time);
+        }
+
+        .submit-btn:hover {
+          background-color: var(--color-navy);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(57, 117, 217, 0.2);
+        }
+
+        /* Icons */
+        .fas,
+        .far {
+          font-size: 1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+          .profile-left-col {
+            margin-bottom: 2rem;
+          }
+
+          .profile-container {
+            padding: 1rem;
           }
         }

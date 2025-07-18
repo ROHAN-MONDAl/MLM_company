@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Sidebar toggle (open/close)
     function toggleSidebar() {
         $('.sidebar-nav, .overlay').toggleClass('active');
@@ -47,7 +47,7 @@ $(document).ready(function() {
         var subtotal = 0;
         var discount = 0;
 
-        $('.cart-item').each(function() {
+        $('.cart-item').each(function () {
             var price = parseFloat($(this).data('price'));
             var itemDiscount = parseFloat($(this).data('discount'));
             var qty = parseInt($(this).find('.qty').text());
@@ -100,12 +100,20 @@ $(document).ready(function() {
     // Optionally expose toggleSidebar and toggleCollapse for external triggers
     window.toggleSidebar = toggleSidebar;
     window.toggleCollapse = toggleCollapse;
-
-
-
-
-
-
-
-    
 });
+
+
+// Toggle password visibility
+  document.querySelectorAll('.toggle-password').forEach(button => {
+    button.addEventListener('click', function() {
+      const target = document.querySelector(this.getAttribute('toggle'));
+      const icon = this.querySelector('i');
+      if (target.type === 'password') {
+        target.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        target.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    });
+  });
