@@ -231,4 +231,33 @@ $(document).ready(function () {
      */
     $('#year').text(new Date().getFullYear());
 
+        /** ----------------------------
+     *  6. Referral vs Group Name Toggle
+     *  ----------------------------
+     */
+    function toggleReferralGroupFields() {
+        const referral = $('#referral').val().trim();
+        const groupName = $('#groupName').val().trim();
+
+        if (groupName !== '') {
+            $('#referral').prop('disabled', true);
+        } else {
+            $('#referral').prop('disabled', false);
+        }
+
+        if (referral !== '') {
+            $('#groupName').prop('disabled', true);
+        } else {
+            $('#groupName').prop('disabled', false);
+        }
+    }
+
+    // Bind events to both fields
+    $('#referral').on('input', toggleReferralGroupFields);
+    $('#groupName').on('input', toggleReferralGroupFields);
+
+    // Run once on page load in case of autofill
+    toggleReferralGroupFields();
+
+
 });

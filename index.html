@@ -67,6 +67,23 @@
                             </div>
                         </div>
 
+                        <!-- Additional Fields: Referral and Group Name -->
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label for="groupName" class="form-label">Group Name</label>
+                                <input type="text" class="form-control" id="groupName"
+                                    placeholder="Enter your group name">
+                                <div class="error" id="groupNameError">Please enter group name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="referral" class="form-label">Referral</label>
+                                <input type="text" class="form-control" id="referral"
+                                    placeholder="Enter referral code">
+                                <div class="error" id="referralError">Please enter referral</div>
+                            </div>
+                        </div>
+
+
                         <!-- Address Information -->
                         <div class="row">
                             <div class="col-md-8">
@@ -126,8 +143,8 @@
                         </div>
 
                         <!-- Terms and Conditions -->
-                        <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" id="termsCheck">
+                        <div class="form-check d-flex justify-content-center mt-3">
+                            <input class="form-check-input mx-2" type="checkbox" id="termsCheck">
                             <label class="form-check-label" for="termsCheck">
                                 I agree to the <a href="#" style="color: var(--color-blue);">Terms and Conditions</a>
                             </label>
@@ -142,35 +159,42 @@
         </div>
     </div>
 
-<!-- Registration Success Modal (Professional Style) -->
-<div class="modal fade" id="registrationSuccessModal" tabindex="-1" aria-labelledby="registrationSuccessLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-md">
-    <div class="modal-content" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-      
-      <!-- Header -->
-      <div class="modal-header border-0" style="background-color: var(--color-navy); border-top-left-radius: 12px; border-top-right-radius: 12px;">
-        <h5 class="modal-title text-white d-flex align-items-center" id="registrationSuccessLabel">
-          <i class="fas fa-check-circle me-2 text-success" style="font-size: 1.5rem;"></i> Registration Submitted
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+    <!-- Registration Success Modal (Professional Style) -->
+    <div class="modal fade" id="registrationSuccessModal" tabindex="-1" aria-labelledby="registrationSuccessLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
 
-      <!-- Body -->
-      <div class="modal-body text-center" style="padding: 30px; color: var(--color-navy); font-size: 1rem;">
-        <p class="fw-semibold mb-3">Thank you for registering with us!</p>
-        <p class="mb-0">Once your registration is <span class="fw-bold text-primary">approved by the admin</span>, your login credentials will be sent to your registered email address.</p>
-      </div>
+                <!-- Header -->
+                <div class="modal-header border-0"
+                    style="background-color: var(--color-navy); border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <h5 class="modal-title text-white d-flex align-items-center" id="registrationSuccessLabel">
+                        <i class="fas fa-check-circle me-2 text-success" style="font-size: 1.5rem;"></i> Registration
+                        Submitted
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
 
-      <!-- Footer -->
-      <div class="modal-footer border-0 justify-content-center pb-4">
-        <button type="button" class="btn px-4 py-2" style="background-color: var(--color-yellow); color: var(--color-navy); font-weight: 600; border-radius: 8px;" data-bs-dismiss="modal">
-          OK, Got it
-        </button>
-      </div>
+                <!-- Body -->
+                <div class="modal-body text-center" style="padding: 30px; color: var(--color-navy); font-size: 1rem;">
+                    <p class="fw-semibold mb-3">Thank you for registering with us!</p>
+                    <p class="mb-0">Once your registration is <span class="fw-bold text-primary">approved by the
+                            admin</span>, your login credentials will be sent to your registered email address.</p>
+                </div>
 
+                <!-- Footer -->
+                <div class="modal-footer border-0 justify-content-center pb-4">
+                    <button type="button" class="btn px-4 py-2"
+                        style="background-color: var(--color-yellow); color: var(--color-navy); font-weight: 600; border-radius: 8px;"
+                        data-bs-dismiss="modal">
+                        OK, Got it
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 

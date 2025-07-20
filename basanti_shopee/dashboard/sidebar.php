@@ -13,7 +13,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="user-info">
             <div class="username fw-bold text-truncate">John Doe</div>
             <div class="user-rank text-truncate">
-                <i class="fas fa-star text-warning me-1"></i>
+               <small><i class="fas fa-crown text-warning mx-2"></i></small>
                 <span>Premium Member</span>
             </div>
         </div>
