@@ -33,28 +33,15 @@
 
         <div class="dashboard-body">
             <!-- Header inside body -->
-            <div class="navbar-header d-flex align-items-center justify-content-between px-3 py-2">
-                <span class="hamburger d-lg-none" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-                <span class="hamburger d-none d-lg-block" onclick="toggleCollapse()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-
-                <div class="header-center d-flex justify-content-center mx-auto align-items-center gap-2">
-                    <img src="your-logo.png" alt="Logo" class="header-logo" width="40" height="40">
-                    <span class="fw-bold fs-5">Basanti Shopee</span>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="container-fluid p-3 p-md-4">
-                    <!-- Account Details Section -->
 
                     <!-- Heading -->
                     <h4 class="mb-4 fw-bold text-center" style="color: var(--color-navy);">
-                        Account Details
+                        Accounts
                     </h4>
 
                     <!-- Account Summary Card -->
@@ -63,24 +50,9 @@
                             <div class="rounded-4 shadow border p-4" style="background-color: var(--color-light); border-color: var(--color-blue);">
                                 <div class="row">
                                     <!-- Account Balance -->
-                                    <div class="col-md-4 text-center border-end">
+                                    <div class="col-md-12 text-center border-end">
                                         <h6 class="fw-bold mb-1" style="color: var(--color-navy);">Current Balance</h6>
                                         <div class="display-5 fw-bold" style="color: var(--color-blue);">₹12,450.50</div>
-                                        <small class="text-muted">As of today</small>
-                                    </div>
-
-                                    <!-- Credit Summary -->
-                                    <div class="col-md-4 text-center border-end">
-                                        <h6 class="fw-bold mb-1" style="color: var(--color-navy);">Total Credits</h6>
-                                        <div class="display-5 fw-bold" style="color: var(--color-green);">₹18,200.00</div>
-                                        <small class="text-muted">This month</small>
-                                    </div>
-
-                                    <!-- Debit Summary -->
-                                    <div class="col-md-4 text-center">
-                                        <h6 class="fw-bold mb-1" style="color: var(--color-navy);">Total Debits</h6>
-                                        <div class="display-5 fw-bold" style="color: var(--color-red);">₹5,749.50</div>
-                                        <small class="text-muted">This month</small>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +61,7 @@
 
                     <!-- Transactions Table -->
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center">
                             <div class="rounded-4 shadow border p-3" style="background-color: var(--color-light); border-color: var(--color-blue);">
                                 <h5 class="fw-bold mb-3" style="color: var(--color-navy);">Transaction History</h5>
 
@@ -97,85 +69,34 @@
                                     <table class="table table-hover">
                                         <thead style="background-color: var(--color-blue); color: white;">
                                             <tr>
-                                                <th>Date</th>
+                                                <th class="text-nowrap">Date</th>
                                                 <th>Description</th>
-                                                <th>Reference</th>
-                                                <th class="text-end">Credit</th>
-                                                <th class="text-end">Debit</th>
-                                                <th class="text-end">Balance</th>
+                                                <th class="text-nowrap">By Reference</th>
+                                                <th class="text-nowrap">Credit</th>
+                                                <th class="text-nowrap">Debit</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <!-- Sample Transaction Row -->
-                                            <tr>
-                                                <td>15 Jul 2023</td>
-                                                <td>Salary Credit</td>
-                                                <td>SAL-0723-001</td>
-                                                <td class="text-end text-success fw-bold">₹12,000.00</td>
-                                                <td class="text-end">-</td>
-                                                <td class="text-end fw-bold">₹15,200.00</td>
-                                            </tr>
-
-                                            <!-- Sample Transaction Row -->
-                                            <tr>
-                                                <td>12 Jul 2023</td>
-                                                <td>Grocery Store</td>
-                                                <td>POS-987654</td>
-                                                <td class="text-end">-</td>
-                                                <td class="text-end text-danger fw-bold">₹2,450.50</td>
-                                                <td class="text-end fw-bold">₹3,200.00</td>
-                                            </tr>
-
-                                            <!-- Sample Transaction Row -->
-                                            <tr>
-                                                <td>10 Jul 2023</td>
-                                                <td>Interest Earned</td>
-                                                <td>INT-0723</td>
-                                                <td class="text-end text-success fw-bold">₹200.00</td>
-                                                <td class="text-end">-</td>
-                                                <td class="text-end fw-bold">₹5,650.50</td>
-                                            </tr>
-
-                                            <!-- Sample Transaction Row -->
-                                            <tr>
-                                                <td>05 Jul 2023</td>
-                                                <td>Electricity Bill</td>
-                                                <td>EB-98765</td>
-                                                <td class="text-end">-</td>
-                                                <td class="text-end text-danger fw-bold">₹1,200.00</td>
-                                                <td class="text-end fw-bold">₹5,450.50</td>
-                                            </tr>
-
-                                            <!-- Sample Transaction Row -->
-                                            <tr>
-                                                <td>01 Jul 2023</td>
-                                                <td>Initial Balance</td>
-                                                <td>OPEN-BAL</td>
-                                                <td class="text-end text-success fw-bold">₹6,650.50</td>
-                                                <td class="text-end">-</td>
-                                                <td class="text-end fw-bold">₹6,650.50</td>
+                                        <tbody id="transactionTableBody">
+                                            <!-- Sample Rows (repeat or generate more for testing) -->
+                                            <tr class="text-wrap">
+                                                <td class="text-nowrap">15 Jul 2023</td>
+                                                <td class="text-wrap">Salary Credit</td>
+                                                <td class="text-nowrap">SAL-0723-001</td>
+                                                <td class="text-success fw-bold">₹12,000.00</td>
+                                                <td class="text-danger fw-bold">₹0.00</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
                                 <!-- Pagination -->
-                                <nav aria-label="Transaction pagination">
-                                    <ul class="pagination justify-content-center mt-3">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
+                                <nav>
+                                    <ul class="pagination justify-content-center mt-3" id="pagination"></ul>
                                 </nav>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

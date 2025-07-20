@@ -32,28 +32,16 @@
         <!-- Main Content -->
         <div class="dashboard-body">
             <!-- Header inside body -->
-            <div class="navbar-header d-flex align-items-center justify-content-between px-3 py-2">
-                <span class="hamburger d-lg-none" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-                <span class="hamburger d-none d-lg-block" onclick="toggleCollapse()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-
-                <div class="header-center d-flex justify-content-center mx-auto align-items-center gap-2">
-                    <img src="your-logo.png" alt="Logo" class="header-logo" width="40" height="40">
-                    <span class="fw-bold fs-5">Basanti Shopee</span>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="container-fluid p-3 p-md-4">
                     <!-- Heading -->
                     <h4 class="mb-4 fw-bold text-center" style="color: var(--color-navy);">
-                        Our Members
+                        Group Members
                     </h4>
-
+                    <p class="text-lg-start text-center fw-bold fs-4 mt-3 mx-auto">Total Members: <b>2</b></p>
                     <!-- Members Grid -->
                     <div class="row g-4">
                         <!-- Member Card -->
@@ -74,7 +62,7 @@
                                 <p class="text-muted small mb-0">Member ID: 001</p>
                             </div>
                         </div>
-<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                             <div class="text-center p-3 rounded-4 shadow border h-100"
                                 style="background-color: var(--color-light); border-color: var(--color-blue); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
 

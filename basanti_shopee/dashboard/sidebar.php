@@ -44,12 +44,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     id="MembershipMenu">
                     <ul class="nav flex-column">
                         <li>
-                            <a href="<?= basename('add_members.php') ?>" class="nav-link <?= ($current_page == 'add_members.php') ? 'active' : '' ?>">
-                                <i class="fas fa-user-plus"></i>
-                                <span class="mx-2">Add Member</span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="<?= basename('members.php') ?>" class="nav-link <?= ($current_page == 'members.php') ? 'active' : '' ?>">
                                 <i class="fas fa-user-friends"></i>
                                 <span class="mx-2">Member Groups</span>

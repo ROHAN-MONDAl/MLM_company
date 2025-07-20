@@ -32,19 +32,7 @@
         <!-- Main Content -->
         <div class="dashboard-body">
             <!-- Header inside body -->
-            <div class="navbar-header d-flex align-items-center justify-content-between px-3 py-2">
-                <span class="hamburger d-lg-none" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-                <span class="hamburger d-none d-lg-block" onclick="toggleCollapse()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-
-                <div class="header-center d-flex justify-content-center mx-auto align-items-center gap-2">
-                    <img src="your-logo.png" alt="Logo" class="header-logo" width="40" height="40">
-                    <span class="fw-bold fs-5">Basanti Shopee</span>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">

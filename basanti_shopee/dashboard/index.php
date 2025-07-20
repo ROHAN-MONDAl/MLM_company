@@ -32,19 +32,7 @@
         <!-- Main Content -->
         <div class="dashboard-body">
             <!-- Header inside body -->
-            <div class="navbar-header d-flex align-items-center justify-content-between px-3 py-2">
-                <span class="hamburger d-lg-none" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-                <span class="hamburger d-none d-lg-block" onclick="toggleCollapse()">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </span>
-
-                <div class="header-center d-flex justify-content-center mx-auto align-items-center gap-2">
-                    <img src="your-logo.png" alt="Logo" class="header-logo" width="40" height="40">
-                    <span class="fw-bold fs-5">Basanti Shopee</span>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
@@ -79,46 +67,15 @@
 
                     <!-- Categories Horizontal Scroll -->
                     <div class="categories-container">
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Electronics"
-                                class="category-img">
-                            <span class="category-name">Electronics</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Fashion"
-                                class="category-img">
-                            <span class="category-name">Fashion</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Home"
-                                class="category-img">
-                            <span class="category-name">Home</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Beauty"
-                                class="category-img">
-                            <span class="category-name">Beauty</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Sports"
-                                class="category-img">
-                            <span class="category-name">Sports</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Toys"
-                                class="category-img">
-                            <span class="category-name">Toys</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Books"
-                                class="category-img">
-                            <span class="category-name">Books</span>
-                        </div>
-                        <div class="category-item">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Groceries"
-                                class="category-img">
-                            <span class="category-name">Groceries</span>
-                        </div>
+                        <a href="categories_products.php" style="text-decoration: none;">
+                            <div class="category-item">
+                                <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Electronics"
+                                    class="category-img">
+                                <span class="category-name">GROCERY</span>
+
+                            </div>
+                        </a>
+
                     </div>
 
                     <!-- Products Grid -->
@@ -126,82 +83,21 @@
                     <div class="products-container">
                         <!-- Product 1 -->
                         <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 1"
-                                class="product-img">
+                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 1" class="product-img">
                             <div class="product-info">
                                 <h4 class="product-name">Wireless Headphones</h4>
                                 <p class="product-price">$59.99</p>
+                                <button class="add-to-cart">Add to Cart</button>
                             </div>
                         </div>
-
-                        <!-- Product 2 -->
-                        <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 2"
-                                class="product-img">
-                            <div class="product-info">
-                                <h4 class="product-name">Smart Watch</h4>
-                                <p class="product-price">$129.99</p>
-                            </div>
-                        </div>
-
-                        <!-- Product 3 -->
-                        <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 3"
-                                class="product-img">
-                            <div class="product-info">
-                                <h4 class="product-name">Bluetooth Speaker</h4>
-                                <p class="product-price">$39.99</p>
-                            </div>
-                        </div>
-
-                        <!-- Product 4 -->
-                        <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 4"
-                                class="product-img">
-                            <div class="product-info">
-                                <h4 class="product-name">Laptop Backpack</h4>
-                                <p class="product-price">$45.50</p>
-                            </div>
-                        </div>
-
-                        <!-- Product 5 -->
-                        <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 5"
-                                class="product-img">
-                            <div class="product-info">
-                                <h4 class="product-name">Coffee Maker</h4>
-                                <p class="product-price">$89.99</p>
-                            </div>
-                        </div>
-
-                        <!-- Product 6 -->
-                        <div class="product-card">
-                            <img src="https://naturo.in/cdn/shop/files/juices.jpg?v=1739161819" alt="Product 6"
-                                class="product-img">
-                            <div class="product-info">
-                                <h4 class="product-name">Fitness Tracker</h4>
-                                <p class="product-price">$79.99</p>
-                            </div>
-                        </div>
+                        <!-- Product 1 -->
                     </div>
                 </div>
 
             </div>
 
             <!-- Footer -->
-            <div class="dashboard-footer">
-                <div class="footer-buttons">
-                    <a href="product_cart.php"> <button class="btn-circle btn-cart" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button></a>
-                    <button class="btn-circle btn-wishlist" title="Wishlist">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                    <button class="btn-circle btn-share" title="Share">
-                        <i class="fas fa-share-alt"></i>
-                    </button>
-                </div>
-            </div>
+            <?php include 'footer.php'; ?>
 
         </div>
     </div>
