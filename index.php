@@ -147,8 +147,10 @@
                             <input class="form-check-input mx-2" type="checkbox" id="termsCheck">
                             <label class="form-check-label" for="termsCheck">
                                 I agree to the <a href="#" style="color: var(--color-blue);">Terms and Conditions</a>
+                                <br>
+                                <div class="error mt-1" id="termsError">You must agree to the terms and conditions</div>
                             </label>
-                            <div class="error mt-1" id="termsError">You must agree to the terms and conditions</div>
+
                         </div>
 
                         <!-- Submit Button -->
