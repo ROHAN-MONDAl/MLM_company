@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basanti Shopee</title>
     <!-- Favicon -->
-    <link rel="icon" href="../../images/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="../images/favicon.svg" type="image/x-icon">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -15,6 +15,7 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="../basanti_shopee/dashboard/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,13 +33,13 @@
         <!-- Main Content -->
         <div class="dashboard-body">
             <!-- Header inside body -->
-            <?php include '../basanti_shopee/dashboard/header.php'; ?>
+            <?php include 'header.php'; ?>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="container-fluid p-3 p-md-4">
                     <!-- Dashboard Title -->
-                
+
                 </div>
 
             </div>
@@ -46,7 +47,7 @@
 
         </div>
     </div>
-
+    <!-- End Main Content -->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -54,6 +55,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Custom JS -->
     <script src="../basanti_shopee/dashboard/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -34,12 +34,13 @@
                 <div class="registration-form">
                     <h2 class="form-title fw-bold">REGISTRATION</h2>
 
-                    <form id="mlmRegistrationForm">
+                    <form id="mlmRegistrationForm" method="POST" action="submit.php" enctype="multipart/form-data">
+
                         <!-- Profile Picture Upload -->
                         <div class="profile-pic-container">
                             <i class="fas fa-user-circle icon"></i>
                             <img id="profileImage" src="" style="display: none;">
-                            <input type="file" id="profilePic" accept="image/*" capture="user" required>
+                            <input type="file" id="profilePic" name="profilePic" accept="image/*" capture="user" required>
                         </div>
                         <p class="text-center mb-4">Click to upload your profile photo</p>
 
@@ -47,14 +48,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="fullName" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="fullName"
-                                    placeholder="Enter your full name">
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name">
                                 <div class="error" id="fullNameError">Please enter your full name</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phoneNumber"
-                                    placeholder="Enter your phone number">
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
                                 <div class="error" id="phoneError">Please enter a valid 10-digit phone number</div>
                             </div>
                         </div>
@@ -62,7 +61,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
                                 <div class="error" id="emailError">Please enter a valid email address</div>
                             </div>
                         </div>
@@ -71,25 +70,21 @@
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label for="groupName" class="form-label">Group Name</label>
-                                <input type="text" class="form-control" id="groupName"
-                                    placeholder="Enter your group name">
+                                <input type="text" class="form-control" id="groupName" name="groupName" placeholder="Enter your group name">
                                 <div class="error" id="groupNameError">Please enter group name</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="referral" class="form-label">Referral</label>
-                                <input type="text" class="form-control" id="referral"
-                                    placeholder="Enter referral code">
-                                <div class="error" id="referralError">Please enter referral</div>
+                                <input type="text" class="form-control" id="referral" name="referral" placeholder="Enter referral code">
+                                <div class="error" id="referralError">Enter referral code or group name anyone is mandatory</div>
                             </div>
                         </div>
-
 
                         <!-- Address Information -->
                         <div class="row">
                             <div class="col-md-8">
                                 <label for="address" class="form-label">Home Address</label>
-                                <textarea class="form-control" id="address" rows="2"
-                                    placeholder="Enter your complete address"></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="2" placeholder="Enter your complete address"></textarea>
                                 <div class="error" id="addressError">Please enter your address</div>
                             </div>
                             <div class="col-md-4">
@@ -104,23 +99,22 @@
                         <div class="row mt-2">
                             <div class="col-md-4">
                                 <label for="pincode" class="form-label">Pin Code</label>
-                                <input type="text" class="form-control" id="pincode"
-                                    placeholder="Enter 6-digit pin code">
+                                <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Enter 6-digit pin code">
                                 <div class="error" id="pincodeError">Please enter a valid 6-digit pin code</div>
                             </div>
                             <div class="col-md-4">
                                 <label for="city" class="form-label">City</label>
-                                <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city">
                                 <div class="error" id="cityError">Please enter your city</div>
                             </div>
                             <div class="col-md-4">
                                 <label for="state" class="form-label">State</label>
-                                <input type="text" class="form-control" id="state" placeholder="Enter your state">
+                                <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state">
                                 <div class="error" id="stateError">Please enter your state</div>
                             </div>
                         </div>
 
-                        <!-- PAN Card Upload with Options -->
+                        <!-- PAN Card Upload -->
                         <div class="row mt-3">
                             <div class="col-md-12 position-relative">
                                 <div class="doc-upload" id="panCardUpload">
@@ -136,67 +130,60 @@
                                         <i class="fas fa-upload me-2"></i>Upload File
                                     </button>
                                 </div>
-                                <input type="file" id="panCard" accept="image/*" style="display: none;">
-                                <input type="file" id="panCardCamera" accept="image/*" capture="environment"
-                                    style="display: none;">
+                                <input type="file" id="panCard" name="panCard" accept="image/*" style="display: none;">
+                                <input type="file" id="panCardCamera" accept="image/*" capture="environment" style="display: none;">
                             </div>
                         </div>
 
                         <!-- Terms and Conditions -->
                         <div class="form-check d-flex justify-content-center mt-3">
-                            <input class="form-check-input mx-2" type="checkbox" id="termsCheck">
+                            <input class="form-check-input mx-2" type="checkbox" id="termsCheck" name="termsCheck">
                             <label class="form-check-label" for="termsCheck">
                                 I agree to the <a href="#" style="color: var(--color-blue);">Terms and Conditions</a>
                                 <br>
                                 <div class="error mt-1" id="termsError">You must agree to the terms and conditions</div>
                             </label>
-
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary mt-4">Register</button>
                     </form>
+
+
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Registration Success Modal (Professional Style) -->
-    <div class="modal fade" id="registrationSuccessModal" tabindex="-1" aria-labelledby="registrationSuccessLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-md">
-            <div class="modal-content" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #FFFFFF; border: 2px solid #FFB427; border-radius: 10px; color: #0B1F3F;">
 
-                <!-- Header -->
-                <div class="modal-header border-0"
-                    style="background-color: var(--color-navy); border-top-left-radius: 12px; border-top-right-radius: 12px;">
-                    <h5 class="modal-title text-white d-flex align-items-center" id="registrationSuccessLabel">
-                        <i class="fas fa-check-circle me-2 text-success" style="font-size: 1.5rem;"></i> Registration
-                        Submitted
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                <div class="modal-header" style="background-color: #FFB427; color: #0B1F3F; border-bottom: none;">
+                    <h5 class="modal-title" id="thankYouModalLabel" style="font-weight: bold;">Registration Complete</h5>
                 </div>
 
-                <!-- Body -->
-                <div class="modal-body text-center" style="padding: 30px; color: var(--color-navy); font-size: 1rem;">
-                    <p class="fw-semibold mb-3">Thank you for registering with us!</p>
-                    <p class="mb-0">Once your registration is <span class="fw-bold text-primary">approved by the
-                            admin</span>, your login credentials will be sent to your registered email address.</p>
+                <div class="modal-body" style="font-size: 1.1rem; color: #0B1F3F;">
+                    <strong>Thank you for your registration!</strong><br>
+                    Once your application is approved by our Basanti team, your login credentials will be sent to the email address you provided.
                 </div>
 
-                <!-- Footer -->
-                <div class="modal-footer border-0 justify-content-center pb-4">
-                    <button type="button" class="btn px-4 py-2"
-                        style="background-color: var(--color-yellow); color: var(--color-navy); font-weight: 600; border-radius: 8px;"
-                        data-bs-dismiss="modal">
-                        OK, Got it
+
+                <div class="modal-footer" style="background-color: #FFFFFF; border-top: none;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        style="background-color: #3975D9; border-color: #3975D9;"
+                        onmouseover="this.style.backgroundColor='#0B1F3F'; this.style.borderColor='#0B1F3F';"
+                        onmouseout="this.style.backgroundColor='#3975D9'; this.style.borderColor='#3975D9';">
+                        Close
                     </button>
                 </div>
 
             </div>
         </div>
     </div>
+
+
 
 
 

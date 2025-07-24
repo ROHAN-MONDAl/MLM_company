@@ -242,7 +242,7 @@
           position: absolute;
           top: 0;
           left: 5%;
-          width: 80%;
+          width: 85%;
           height: 100%;
           background-color: rgba(255, 255, 255, 0.144);
           border-radius: 0.3rem;
@@ -270,60 +270,60 @@
           width: 90%;
         }
 
-/* ===========================================
+        /* ===========================================
    DROPDOWN TOGGLE + CONTAINER
 =========================================== */
-.nav-link.dropdown-toggle {
-  padding: 0.75rem 1.5rem;
-  gap: 0.4rem;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-}
+        .nav-link.dropdown-toggle {
+          padding: 0.75rem 1.5rem;
+          gap: 0.4rem;
+          border-radius: 0;
+          display: flex;
+          align-items: center;
+        }
 
-.nav-link.dropdown-toggle::after {
-  display: none !important;
-}
+        .nav-link.dropdown-toggle::after {
+          display: none !important;
+        }
 
-.toggle-icon {
-  font-size: 0.75rem;
-  color: #ffffffcc;
-  margin-left: auto;
-  transition: transform var(--transition-time, 0.3s) ease;
-}
+        .toggle-icon {
+          font-size: 0.75rem;
+          color: #ffffffcc;
+          margin-left: auto;
+          transition: transform var(--transition-time, 0.3s) ease;
+        }
 
-/* ✅ Fix: rotate the arrow only when expanded */
-.nav-link.dropdown-toggle[aria-expanded="true"] .toggle-icon {
-  transform: rotate(180deg);
-}
+        /* ✅ Fix: rotate the arrow only when expanded */
+        .nav-link.dropdown-toggle[aria-expanded="true"] .toggle-icon {
+          transform: rotate(180deg);
+        }
 
-/* Container that appears under the dropdown */
-.dropdown-animated {
-  background: none;
-  padding: 0;
-  margin-top: 0.3rem;
-  border-radius: 0;
-  transition: all 0.3s ease;
-  box-shadow: none;
-  border: none;
-}
+        /* Container that appears under the dropdown */
+        .dropdown-animated {
+          background: none;
+          padding: 0;
+          margin-top: 0.3rem;
+          border-radius: 0;
+          transition: all 0.3s ease;
+          box-shadow: none;
+          border: none;
+        }
 
-/* ===========================================
+        /* ===========================================
    DROPDOWN SUB-LINKS
 =========================================== */
-.dropdown-animated .nav-link {
-  padding: 0.5rem 1.5rem 0.5rem 3rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  background: none;
-  border-radius: 0;
-  color: #ffffff;
-  transition: color 0.3s ease;
-}
+        .dropdown-animated .nav-link {
+          padding: 0.5rem 1.5rem 0.5rem 3rem;
+          font-size: 0.9rem;
+          font-weight: 500;
+          background: none;
+          border-radius: 0;
+          color: #ffffff;
+          transition: color 0.3s ease;
+        }
 
-.dropdown-animated .nav-link:hover {
-  color: #e0e0e0;
-}
+        .dropdown-animated .nav-link:hover {
+          color: #e0e0e0;
+        }
 
         /* ===========================================
           DASHBOARD CONTENT AREA
@@ -611,7 +611,7 @@
         /* Section title styles */
         .section-title {
           color: var(--color-navy);
-          font-weight: 600;
+          font-weight: 900;
           margin: 1.5rem 0;
           position: relative;
           padding-left: 15px;
@@ -641,15 +641,15 @@
           padding: 12px 20px;
           padding-right: 50px;
           border-radius: 25px;
-          border: 1px solid #ddd;
+          border: 0.4px solid rgba(255, 255, 0, 0.158);
           font-size: 16px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 4px var(--color-yellow);
           transition: all 0.3s ease;
         }
 
         .search-bar:focus {
           border-color: var(--color-yellow);
-          box-shadow: 0 0 0 0.25rem rgba(255, 180, 39, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(3, 84, 160, 0.25);
           outline: none;
         }
 

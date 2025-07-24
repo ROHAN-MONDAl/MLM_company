@@ -139,125 +139,182 @@ $(document).ready(function () {
      *  4. Form Validation + Success Modal
      *  ----------------------------
      */
-    $('#mlmRegistrationForm').submit(function (e) {
-        e.preventDefault(); // Prevent page reload
 
-        let isValid = true;
+    // form-validation.js
 
-        // Clear previous validation messages
-        $('.error').hide();
-        $('.form-control, .form-check-input').removeClass('is-invalid');
+    $(document).ready(function () {
 
-        // Full Name
-        if ($('#fullName').val().trim() === '') {
-            $('#fullNameError').show();
-            $('#fullName').addClass('is-invalid');
-            isValid = false;
+        // Utility: Validate text input by minimum length
+        function validateMinLength(selector, minLen, errorSelector) {
+            const val = $(selector).val().trim();
+            if (val.length >= minLen) {
+                $(selector).addClass('valid').removeClass('invalid');
+                $(errorSelector).hide();
+                return true;
+            } else {
+                $(selector).addClass('invalid').removeClass('valid');
+                $(errorSelector).show();
+                return false;
+            }
         }
 
-        // Phone Number (10-digit)
-        const phone = $('#phoneNumber').val().trim();
-        if (phone === '' || !/^\d{10}$/.test(phone)) {
-            $('#phoneError').show();
-            $('#phoneNumber').addClass('is-invalid');
-            isValid = false;
+        // Utility: Validate regex pattern (e.g. phone, email, pincode)
+        function validatePattern(selector, pattern, errorSelector) {
+            const val = $(selector).val().trim();
+            if (pattern.test(val)) {
+                $(selector).addClass('valid').removeClass('invalid');
+                $(errorSelector).hide();
+                return true;
+            } else {
+                $(selector).addClass('invalid').removeClass('valid');
+                $(errorSelector).show();
+                return false;
+            }
         }
 
-        // Email
-        const email = $('#email').val().trim();
-        if (email === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            $('#emailError').show();
-            $('#email').addClass('is-invalid');
-            isValid = false;
+        // Utility: Validate if required field is filled
+        function validateRequired(selector, errorSelector) {
+            const val = $(selector).val().trim();
+            if (val !== '') {
+                $(selector).addClass('valid').removeClass('invalid');
+                $(errorSelector).hide();
+                return true;
+            } else {
+                $(selector).addClass('invalid').removeClass('valid');
+                $(errorSelector).show();
+                return false;
+            }
         }
 
-        // Address
-        if ($('#address').val().trim() === '') {
-            $('#addressError').show();
-            $('#address').addClass('is-invalid');
-            isValid = false;
-        }
+        // Full Name Validation
+        $('#fullName').on('input', function () {
+            validateMinLength('#fullName', 4, '#fullNameError');
+        });
+
+        // Phone Validation (10-digit)
+        $('#phoneNumber').on('input', function () {
+            validatePattern('#phoneNumber', /^[0-9]{10}$/, '#phoneError');
+        });
+
+        // Email Validation
+        $('#email').on('input', function () {
+            validatePattern('#email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/, '#emailError');
+        });
 
         // Pincode (6-digit)
-        const pincode = $('#pincode').val().trim();
-        if (pincode === '' || !/^\d{6}$/.test(pincode)) {
-            $('#pincodeError').show();
-            $('#pincode').addClass('is-invalid');
-            isValid = false;
-        }
+        $('#pincode').on('input', function () {
+            validatePattern('#pincode', /^[0-9]{6}$/, '#pincodeError');
+        });
 
-        // City
-        if ($('#city').val().trim() === '') {
-            $('#cityError').show();
-            $('#city').addClass('is-invalid');
-            isValid = false;
-        }
+        // City, State, Address
+        $('#city, #state, #address').on('input', function () {
+            validateRequired(`#${this.id}`, `#${this.id}Error`);
+        });
 
-        // State
-        if ($('#state').val().trim() === '') {
-            $('#stateError').show();
-            $('#state').addClass('is-invalid');
-            isValid = false;
-        }
+        // Group Name / Referral mutual exclusivity
+        $('#groupName').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#referral').prop('disabled', true).val('').removeClass('valid invalid');
+                $('#referralError').hide();
+            } else {
+                $('#referral').prop('disabled', false);
+            }
+            validateRequired('#groupName', '#groupNameError');
+        });
 
-        // PAN Upload (check text content)
-        if (!$('#panCardName').text()) {
-            alert('Please upload your PAN Card');
-            isValid = false;
-        }
+        $('#referral').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#groupName').prop('disabled', true).val('').removeClass('valid invalid');
+                $('#groupNameError').hide();
+            } else {
+                $('#groupName').prop('disabled', false);
+            }
+            validateRequired('#referral', '#referralError');
+        });
 
-        // Terms and Conditions
-        if (!$('#termsCheck').is(':checked')) {
-            $('#termsError').show();
-            $('#termsCheck').addClass('is-invalid');
-            isValid = false;
-        }
+        // PAN Card validation (check if file selected)
+        $('#panCard').on('change', function () {
+            if (this.files.length > 0) {
+                $('#panCardUpload').addClass('valid').removeClass('invalid');
+            } else {
+                $('#panCardUpload').addClass('invalid').removeClass('valid');
+            }
+        });
 
-        // If everything is valid, show success modal
-        if (isValid) {
-            $('#registrationSuccessModal').modal('show');
+        // Terms checkbox
+        $('#termsCheck').on('change', function () {
+            if ($(this).is(':checked')) {
+                $('#termsError').hide();
+            } else {
+                $('#termsError').show();
+            }
+        });
 
-            // Optionally reset form
-            // $('#mlmRegistrationForm')[0].reset();
-            // $('.profile-pic-container .icon').show();
-            // $('#profileImage').hide();
-            // $('#panCardName').text('');
-        }
+        // Final form submission check
+        $('#mlmRegistrationForm').on('submit', function (e) {
+            let isValid = true;
+
+            isValid &= validateMinLength('#fullName', 4, '#fullNameError');
+            isValid &= validatePattern('#phoneNumber', /^[0-9]{10}$/, '#phoneError');
+            isValid &= validatePattern('#email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/, '#emailError');
+            isValid &= validatePattern('#pincode', /^[0-9]{6}$/, '#pincodeError');
+            isValid &= validateRequired('#city', '#cityError');
+            isValid &= validateRequired('#state', '#stateError');
+            isValid &= validateRequired('#address', '#addressError');
+
+            // PAN card check
+            if ($('#panCard')[0].files.length === 0) {
+                alert("Please upload your PAN card.");
+                $('#panCardUpload').addClass('invalid').removeClass('valid');
+                isValid = false;
+            }
+
+
+            // Terms check
+            if (!$('#termsCheck').is(':checked')) {
+                $('#termsError').show();
+                isValid = false;
+            }
+
+            // Referral or Group name must be filled
+            const groupFilled = $('#groupName').val().trim() !== '';
+            const referralFilled = $('#referral').val().trim() !== '';
+            if (!groupFilled && !referralFilled) {
+                $('#groupNameError').show();
+                $('#referralError').show();
+                $('#groupName, #referral').addClass('invalid');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault(); // Stop form if validation fails
+            }
+        });
     });
 
+
+
     /** ----------------------------
-     *  5. Auto Footer Year
+     *  5. For Modal Popup on Registration Success
+     *  ----------------------------
+     */
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('registration') === 'success') {
+        const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+        thankYouModal.show();
+
+        // Redirect to index.php after 3 seconds (3000 milliseconds)
+        setTimeout(function () {
+            window.location.href = 'index.php';
+        }, 3000);
+    }
+
+    /** ----------------------------
+     *  6. Auto Footer Year
      *  ----------------------------
      */
     $('#year').text(new Date().getFullYear());
-
-        /** ----------------------------
-     *  6. Referral vs Group Name Toggle
-     *  ----------------------------
-     */
-    function toggleReferralGroupFields() {
-        const referral = $('#referral').val().trim();
-        const groupName = $('#groupName').val().trim();
-
-        if (groupName !== '') {
-            $('#referral').prop('disabled', true);
-        } else {
-            $('#referral').prop('disabled', false);
-        }
-
-        if (referral !== '') {
-            $('#groupName').prop('disabled', true);
-        } else {
-            $('#groupName').prop('disabled', false);
-        }
-    }
-
-    // Bind events to both fields
-    $('#referral').on('input', toggleReferralGroupFields);
-    $('#groupName').on('input', toggleReferralGroupFields);
-
-    // Run once on page load in case of autofill
-    toggleReferralGroupFields();
 
 
 });
