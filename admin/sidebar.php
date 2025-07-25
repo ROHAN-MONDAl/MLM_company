@@ -12,7 +12,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="user-info ms-auto text-end">
             <div class="username fw-bold text-truncate">John Doe</div>
             <div class="user-rank text-truncate">
-                <i class="fas fa-crown text-warning"></i> <span>Admin</span>
+                <i class="fas fa-crown text-warning"></i>
+                <span class="nav-text">Admin</span>
             </div>
         </div>
     </div>
@@ -25,67 +26,68 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li>
                 <a href="index.php" class="nav-link <?= ($current_page == 'index.php') ? 'active' : '' ?>">
                     <i class="fas fa-home"></i>
-                    <span>Overview</span>
+                    <span class="nav-text">Overview</span>
                 </a>
             </li>
+
             <!-- Dropdown: Inventory -->
             <li>
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['categories.php', 'products.php']) ? '' : 'collapsed' ?>"
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['add_products.php', 'all_categories.php', 'products.php']) ? '' : 'collapsed' ?>"
                     data-bs-toggle="collapse" href="#InventoryMenu"
-                    role="button" aria-expanded="<?= in_array($current_page, ['categories.php', 'products.php']) ? 'true' : 'false' ?>"
-                    aria-controls="InventoryMenu">
+                    role="button" aria-expanded="<?= in_array($current_page, ['add_products.php', 'all_categories.php', 'products.php']) ? 'true' : 'false' ?>" aria-controls="InventoryMenu">
                     <i class="fas fa-boxes"></i>
-                    <span class="mx-2">Inventories&nbsp;&nbsp;</span>
+                    <span class="nav-text">Inventories</span>
                     <i class="fas fa-chevron-down toggle-icon mx-auto"></i>
                 </a>
-                <div class="collapse dropdown-animated <?= in_array($current_page, ['categories.php', 'products.php']) ? 'show' : '' ?>"
+                <div class="collapse dropdown-animated <?= in_array($current_page, ['add_products.php', 'all_categories.php', 'products.php']) ? 'show' : '' ?>"
                     id="InventoryMenu">
                     <ul class="nav flex-column">
                         <li>
-                            <a href="categories.php" class="nav-link <?= ($current_page == 'categories.php') ? 'active' : '' ?>">
+                            <a href="add_products.php" class="nav-link <?= ($current_page == 'add_products.php') ? 'active' : '' ?>">
                                 <i class="fa-brands fa-product-hunt"></i>
-                                <span class="mx-2">Add Products</span>
+                                <span class="nav-text">Add Products</span>
                             </a>
                         </li>
                         <li>
-                            <a href="categories.php" class="nav-link <?= ($current_page == 'categories.php') ? 'active' : '' ?>">
+                            <a href="all_categories.php" class="nav-link <?= ($current_page == 'all_categories.php') ? 'active' : '' ?>">
                                 <i class="fas fa-box"></i>
-                                <span class="mx-2">All Categories</span>
+                                <span class="nav-text">All Categories</span>
                             </a>
                         </li>
                         <li>
                             <a href="products.php" class="nav-link <?= ($current_page == 'products.php') ? 'active' : '' ?>">
                                 <i class="fas fa-layer-group"></i>
-                                <span class="mx-2">Products</span>
+                                <span class="nav-text">Products</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
 
+
             <!-- Dropdown: Distributors -->
             <li>
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['add_members.php', 'members.php', 'groups.php']) ? '' : 'collapsed' ?>"
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['all_distributors.php', 'distributor_groups.php']) ? '' : 'collapsed' ?>"
                     data-bs-toggle="collapse" href="#DistributorsMenu"
-                    role="button" aria-expanded="<?= in_array($current_page, ['add_members.php', 'members.php', 'groups.php']) ? 'true' : 'false' ?>"
+                    role="button" aria-expanded="<?= in_array($current_page, ['all_distributors.php', 'distributor_groups.php']) ? 'true' : 'false' ?>"
                     aria-controls="DistributorsMenu">
                     <i class="fas fa-users"></i>
-                    <span class="mx-2">Distributors</span>
+                    <span class="nav-text">Distributors</span>
                     <i class="fas fa-chevron-down toggle-icon mx-auto"></i>
                 </a>
-                <div class="collapse dropdown-animated <?= in_array($current_page, ['add_members.php', 'members.php', 'groups.php']) ? 'show' : '' ?>"
+                <div class="collapse dropdown-animated <?= in_array($current_page, ['all_distributors.php', 'distributor_groups.php']) ? 'show' : '' ?>"
                     id="DistributorsMenu">
                     <ul class="nav flex-column">
                         <li>
-                            <a href="members.php" class="nav-link <?= ($current_page == 'members.php') ? 'active' : '' ?>">
+                            <a href="all_distributors.php" class="nav-link <?= ($current_page == 'all_distributors.php') ? 'active' : '' ?>">
                                 <i class="fas fa-user-friends"></i>
-                                <span class="mx-2">All Distributors</span>
+                                <span class="nav-text">All Distributors</span>
                             </a>
                         </li>
                         <li>
-                            <a href="groups.php" class="nav-link <?= ($current_page == 'groups.php') ? 'active' : '' ?>">
+                            <a href="distributor_groups.php" class="nav-link <?= ($current_page == 'distributor_groups.php') ? 'active' : '' ?>">
                                 <i class="fas fa-layer-group"></i>
-                                <span class="mx-2">Groups</span>
+                                <span class="nav-text">Groups</span>
                             </a>
                         </li>
                     </ul>
@@ -96,7 +98,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li>
                 <a href="accounts.php" class="nav-link <?= ($current_page == 'accounts.php') ? 'active' : '' ?>">
                     <i class="fas fa-file-invoice-dollar"></i>
-                    <span>Accounts</span>
+                    <span class="nav-text">Accounts</span>
                 </a>
             </li>
 
@@ -107,7 +109,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     role="button" aria-expanded="<?= in_array($current_page, ['settings_profile.php', 'settings_security.php']) ? 'true' : 'false' ?>"
                     aria-controls="settingsMenu">
                     <i class="fas fa-cogs"></i>
-                    <span class="mx-2">Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="nav-text">Settings</span>
                     <i class="fas fa-chevron-down toggle-icon mx-auto"></i>
                 </a>
                 <div class="collapse dropdown-animated <?= in_array($current_page, ['settings_profile.php', 'settings_security.php']) ? 'show' : '' ?>"
@@ -116,13 +118,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <li>
                             <a href="settings_profile.php" class="nav-link <?= ($current_page == 'settings_profile.php') ? 'active' : '' ?>">
                                 <i class="fas fa-user-cog"></i>
-                                <span class="mx-2">Profile Settings</span>
+                                <span class="nav-text">Profile Settings</span>
                             </a>
                         </li>
                         <li>
                             <a href="settings_security.php" class="nav-link <?= ($current_page == 'settings_security.php') ? 'active' : '' ?>">
                                 <i class="fas fa-shield-alt"></i>
-                                <span class="mx-2">Security</span>
+                                <span class="nav-text">Security</span>
                             </a>
                         </li>
                     </ul>
@@ -133,9 +135,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li>
                 <a href="logout.php" class="nav-link <?= ($current_page == 'logout.php') ? 'active' : '' ?>">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <span class="nav-text">Logout</span>
                 </a>
             </li>
         </ul>
     </div>
 </div>
+<!-- End of Sidebar -->
