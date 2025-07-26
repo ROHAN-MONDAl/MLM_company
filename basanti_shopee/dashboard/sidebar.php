@@ -37,7 +37,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     role="button" aria-expanded="<?= in_array($current_page, ['add_members.php', 'members.php']) ? 'true' : 'false' ?>"
                     aria-controls="MembershipMenu">
                     <i class="fas fa-users"></i>
-                    <span class="mx-2">Members</span>
+                    <span class="mx-2">Groups</span>
                     <i class="fas fa-chevron-down toggle-icon mx-auto"></i>
                 </a>
                 <div class="collapse dropdown-animated <?= in_array($current_page, ['add_members.php', 'members.php']) ? 'show' : '' ?>"
@@ -46,7 +46,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <li>
                             <a href="<?= basename('members.php') ?>" class="nav-link <?= ($current_page == 'members.php') ? 'active' : '' ?>">
                                 <i class="fas fa-user-friends"></i>
-                                <span class="mx-2">Member Groups</span>
+                                <span class="mx-2">Members</span>
                             </a>
                         </li>
                     </ul>

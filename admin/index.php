@@ -41,9 +41,13 @@
                 <div class="container-fluid p-3 p-md-4">
                     <div class="dashboard-tab-container">
                         <!-- Tab Buttons -->
-                        <div class="dashboard-tab-buttons d-flex justify-content-center mb-3">
-                            <button class="dashboard-tab-button active" data-tab="tab1">Dashboard</button>
-                            <button class="dashboard-tab-button" data-tab="tab2">Members Requests</button>
+                        <div class="dashboard-tab-buttons d-flex justify-content-center">
+                            <div class="d-flex overflow-auto flex-nowrap gap-2">
+                                <button class="btn btn-outline-primary btn-sm dashboard-tab-button active" data-tab="tab1">Overview</button>
+                                <button class="btn btn-outline-primary btn-sm dashboard-tab-button" data-tab="tab2">Requests</button>
+                                <button class="btn btn-outline-primary btn-sm dashboard-tab-button" data-tab="tab3">Featured Page</button>
+                            </div>
+
                         </div>
 
                         <!-- Overview Tab -->
@@ -157,7 +161,64 @@
                             </div>
                         </div>
 
+                        <!-- Home Page Tab -->
+                        <!-- Inside your tab3 -->
+                        <div class="dashboard-tab-content" id="tab3" style="display: none;">
+                            <h2 class="dashboard-section-title"><b>Featured Page</b></h2>
+                            <p class="dashboard-section-subtitle">Manage the content displayed on the featured page</p>
+                            <div class="dashboard-box-container">
+                                <!-- Featured Forms Start -->
+
+                                <!-- Banner Upload -->
+                                <form class="mb-4 p-3 border rounded bg-light">
+                                    <h5><i class="fas fa-image me-2"></i>Upload Banner</h5>
+                                    <div class="mb-3">
+                                        <label for="bannerImage" class="form-label">Choose Banner Image</label>
+                                        <input type="file" class="form-control" id="bannerImage" accept="image/*">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-upload me-1"></i>Upload Banner
+                                    </button>
+                                </form>
+
+                                <!-- Featured Product Upload -->
+                                <form class="p-3 border rounded bg-light">
+                                    <h5><i class="fas fa-star me-2"></i>Add Featured Product</h5>
+
+                                    <!-- Product Image -->
+                                    <div class="mb-3">
+                                        <label for="productImage" class="form-label">Product Image</label>
+                                        <input type="file" class="form-control" id="productImage" accept="image/*">
+                                    </div>
+
+                                    <!-- Product Name -->
+                                    <div class="mb-3">
+                                        <label for="productName" class="form-label"><i class="fas fa-tag me-2"></i>Product Name</label>
+                                        <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                                    </div>
+
+                                    <!-- Product Price -->
+                                    <div class="mb-3">
+                                        <label for="productPrice" class="form-label"><i class="fas fa-rupee-sign me-2"></i>Price</label>
+                                        <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+                                    </div>
+
+                                    <!-- Product Description -->
+                                    <div class="mb-3">
+                                        <label for="productDesc" class="form-label"><i class="fas fa-align-left me-2"></i>Description</label>
+                                        <textarea class="form-control" id="productDesc" rows="3" placeholder="Enter product description"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success mx-auto d-block">
+                                        <i class="fas fa-plus me-1"></i>Add Product
+                                    </button>
+                                </form>
+                                <!-- Featured Forms End -->
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <!-- End Dashboard Content -->
