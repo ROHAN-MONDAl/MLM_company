@@ -37,24 +37,22 @@
                 <h2>WELCOME</h2>
                 <h4>Sign In</h4>
 
+                <!-- Your Login Form -->
                 <form id="loginForm" novalidate>
                     <div class="mb-3">
                         <label class="form-label"><i class="fa fa-user"></i> Username</label>
                         <input type="text" class="form-control" id="username" placeholder="Enter username">
-                        <div class="invalid-feedback">Username must be at least 6 characters.</div>
+                        <div class="invalid-feedback">Please enter your username</div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label"><i class="fa fa-lock"></i> Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Enter password">
-                        <div class="invalid-feedback">
-                            Password must be at least 6 characters, include 1 uppercase, 1 lowercase, 1 number, and 1
-                            special character.
-                        </div>
+                        <div class="invalid-feedback">Please enter your password</div>
                     </div>
 
                     <div class="form-check d-flex justify-content-center mb-3">
-                        <input type="checkbox" class="form-check-input mx-1" id="remember">
+                        <input type="checkbox" class="form-check-input border border-dark rounded-1 mx-1" id="remember">
                         <label class="form-check-label" for="remember">remember me</label>
                     </div>
 

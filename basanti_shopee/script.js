@@ -1,63 +1,67 @@
-function validatePassword(password) {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&^])[A-Za-z\d@$!%*?#&^]{6,}$/;
-    return pattern.test(password);
-}
-
 $(document).ready(function () {
-    function validateField(id, isValid) {
-        const field = $('#' + id);
-        field.removeClass('is-valid is-invalid');
-        field.addClass(isValid ? 'is-valid' : 'is-invalid');
+    function showError(input, message) {
+        input.addClass('is-invalid');
+        input.next('.invalid-feedback').text(message).show();
     }
 
-    $('#username').on('input', function () {
-        const value = $(this).val().trim();
-        validateField('username', value.length >= 6);
+    function removeError(input) {
+        input.removeClass('is-invalid');
+        input.next('.invalid-feedback').hide();
+    }
+
+    function validateForm() {
+        let valid = true;
+        const username = $('#username');
+        const password = $('#password');
+
+        // Username validation
+        if (username.val().trim() === '') {
+            showError(username, 'Please enter your username');
+            valid = false;
+        } else {
+            removeError(username);
+        }
+
+        // Password validation
+        if (password.val().trim() === '') {
+            showError(password, 'Please enter your password');
+            valid = false;
+        } else if (password.val().length < 6) {
+            showError(password, 'Password must be at least 6 characters');
+            valid = false;
+        } else {
+            removeError(password);
+        }
+
+        return valid;
+    }
+
+    // Real-time validation on input
+    $('#username, #password').on('input', function () {
+        validateForm();
     });
 
-    $('#password').on('input', function () {
-        validateField('password', validatePassword($(this).val()));
-    });
-
+    // Submit handler
     $('#loginForm').on('submit', function (e) {
         e.preventDefault();
-        const username = $('#username').val().trim();
-        const password = $('#password').val();
 
-        let valid = true;
-
-        if (username.length < 6) {
-            validateField('username', false);
-            valid = false;
-        } else {
-            validateField('username', true);
-        }
-
-        if (!validatePassword(password)) {
-            validateField('password', false);
-            valid = false;
-        } else {
-            validateField('password', true);
-        }
-
-        if (valid) {
-            $('#loginBtn').attr('disabled', true);
-            $('#loginText').text('Logging in...');
+        if (validateForm()) {
+            $('#loginBtn').prop('disabled', true);
+            $('#loginText').addClass('visually-hidden');
             $('#loginSpinner').removeClass('visually-hidden');
 
+            // Simulate login delay
             setTimeout(function () {
-                $('#loginBtn').attr('disabled', false);
-                $('#loginText').text('Login');
-                $('#loginSpinner').addClass('visually-hidden');
+                alert('Login successful!');
                 $('#loginForm')[0].reset();
-                $('.form-control').removeClass('is-valid is-invalid');
-            }, 2000);
+                $('#loginBtn').prop('disabled', false);
+                $('#loginText').removeClass('visually-hidden');
+                $('#loginSpinner').addClass('visually-hidden');
+                $('#username, #password').removeClass('is-invalid');
+            }, 1500);
         }
     });
-
-
 });
 
 // footer year auto update
-    document.getElementById('year').textContent = new Date().getFullYear();
-
+document.getElementById('year').textContent = new Date().getFullYear();
