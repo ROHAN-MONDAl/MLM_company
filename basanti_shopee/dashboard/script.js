@@ -99,72 +99,255 @@ $(document).ready(function () {
     // Expose sidebar toggle functions globally for use elsewhere (e.g., from buttons)
     window.toggleSidebar = toggleSidebar;
     window.toggleCollapse = toggleCollapse;
-});
 
-// Toggle password visibility for input fields with .toggle-password button
-document.querySelectorAll('.toggle-password').forEach(button => {
-    button.addEventListener('click', function () {
-        const target = document.querySelector(this.getAttribute('toggle'));
-        const icon = this.querySelector('i');
-        // Toggle between password and text input types
-        if (target.type === 'password') {
-            target.type = 'text';
-            icon.classList.replace('fa-eye', 'fa-eye-slash');
-        } else {
-            target.type = 'password';
-            icon.classList.replace('fa-eye-slash', 'fa-eye');
+
+    // ================================
+    // user Profile validations
+    //================================
+
+    // Profile picture upload preview
+    $('#avatarUpload').change(function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            // Validate file size (2MB max)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Profile picture must be less than 2MB');
+                return;
+            }
+
+            // Create preview
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                $('#avatarPreview').css('background-image', `url('${event.target.result}')`);
+            };
+            reader.readAsDataURL(file);
         }
     });
-});
 
-// Table pagination for transaction history
-$(document).ready(function () {
-    const rowsPerPage = 5; // Number of rows per page
-    const rows = $('#transactionTableBody tr');
-    const totalRows = rows.length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-    const pagination = $('#pagination');
+    // PAN card file upload feedback
+    $('#panCard').change(function (e) {
+        const file = e.target.files[0];
+        const $wrapper = $(this).closest('.file-upload-wrapper');
 
-    // Shows only the rows for the current page and updates pagination controls
-    function showPage(page) {
-        rows.hide();
-        rows.slice((page - 1) * rowsPerPage, page * rowsPerPage).show();
+        if (file) {
+            // Validate file size (5MB max)
+            if (file.size > 5 * 1024 * 1024) {
+                $('#panCardError').text('File must be less than 5MB').css('color', 'var(--error-color)');
+                $wrapper.attr('data-text', 'File too large - max 5MB');
+                return;
+            }
 
-        pagination.empty();
+            // Validate file type
+            const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            if (!validTypes.includes(file.type)) {
+                $('#panCardError').text('Only JPG, PNG, or PDF files allowed').css('color', 'var(--error-color)');
+                $wrapper.attr('data-text', 'Invalid file type');
+                return;
+            }
 
-        // Previous button (disabled on first page)
-        const prevDisabled = page === 1 ? 'disabled' : '';
-        pagination.append(`<li class="page-item ${prevDisabled}"><a class="page-link" href="#" data-page="${page - 1}">Previous</a></li>`);
-
-        // Page number buttons
-        for (let i = 1; i <= totalPages; i++) {
-            const active = i === page ? 'active' : '';
-            pagination.append(`<li class="page-item ${active}"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`);
+            // Update UI
+            $('#panCardError').text('');
+            $wrapper.attr('data-text', file.name);
         }
+    });
 
-        // Next button (disabled on last page)
-        const nextDisabled = page === totalPages ? 'disabled' : '';
-        pagination.append(`<li class="page-item ${nextDisabled}"><a class="page-link" href="#" data-page="${page + 1}">Next</a></li>`);
+    // Real-time validation
+    $('#fullName').on('input', validateName);
+    $('#phoneNumber').on('input', validatePhone);
+    $('#emailAddress').on('input', validateEmail);
+    $('#streetAddress').on('input', validateAddress);
+    $('#postalCode').on('input', validatePostalCode);
+
+    function validateName() {
+        const $input = $('#fullName');
+        const $error = $('#fullNameError');
+        const value = $input.val().trim();
+
+        if (value.length === 0) {
+            showError($input, $error, 'Full name is required');
+        } else if (value.length < 3) {
+            showError($input, $error, 'Name must be at least 3 characters');
+        } else {
+            showSuccess($input, $error);
+        }
     }
 
-    // Show first page on load
-    showPage(1);
+    function validatePhone() {
+        const $input = $('#phoneNumber');
+        const $error = $('#phoneError');
+        const value = $input.val().trim();
+        const phoneRegex = /^[0-9]{10,15}$/;
 
-    // Handle pagination link clicks (event delegation)
-    pagination.on('click', 'a.page-link', function (e) {
-        e.preventDefault();
-        const page = parseInt($(this).data('page'));
-        if (!isNaN(page) && page >= 1 && page <= totalPages) {
-            showPage(page);
+        if (value.length === 0) {
+            showError($input, $error, 'Phone number is required');
+        } else if (!phoneRegex.test(value)) {
+            showError($input, $error, 'Enter a valid phone number (10-15 digits)');
+        } else {
+            showSuccess($input, $error);
         }
+    }
+
+    function validateEmail() {
+        const $input = $('#emailAddress');
+        const $error = $('#emailError');
+        const value = $input.val().trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (value.length === 0) {
+            showError($input, $error, 'Email is required');
+        } else if (!emailRegex.test(value)) {
+            showError($input, $error, 'Enter a valid email address');
+        } else {
+            showSuccess($input, $error);
+        }
+    }
+
+    function validateAddress() {
+        const $input = $('#streetAddress');
+        const $error = $('#addressError');
+        const value = $input.val().trim();
+
+        if (value.length === 0) {
+            showError($input, $error, 'Address is required');
+        } else if (value.length < 10) {
+            showError($input, $error, 'Address must be at least 10 characters');
+        } else {
+            showSuccess($input, $error);
+        }
+    }
+
+    function validatePostalCode() {
+        const $input = $('#postalCode');
+        const $error = $('#postalCodeError');
+        const value = $input.val().trim();
+        const postalRegex = /^[0-9]{6}$/;
+
+        if (value.length === 0) {
+            showError($input, $error, 'Postal code is required');
+        } else if (!postalRegex.test(value)) {
+            showError($input, $error, 'Enter a valid 6-digit postal code');
+        } else {
+            showSuccess($input, $error);
+        }
+    }
+
+    function showError($input, $error, message) {
+        $input.removeClass('valid').addClass('invalid');
+        $error.text(message).css('color', 'var(--error-color)');
+        $input.closest('.input-with-feedback').find('.valid-feedback').css('opacity', '0');
+    }
+
+    function showSuccess($input, $error) {
+        $input.removeClass('invalid').addClass('valid');
+        $error.text('');
+        $input.closest('.input-with-feedback').find('.valid-feedback').css('opacity', '1');
+    }
+
+    // Form submission
+    $('#profileForm').submit(function (e) {
+        e.preventDefault();
+
+        // Trigger all validations
+        validateName();
+        validatePhone();
+        validateEmail();
+        validateAddress();
+        validatePostalCode();
+
+        // Check PAN card upload
+        if ($('#panCard')[0].files.length === 0) {
+            $('#panCardError').text('PAN card upload is required').css('color', 'var(--error-color)');
+            return;
+        } else {
+            $('#panCardError').text('');
+        }
+
+        // Check if any fields are invalid
+        if ($('.invalid').length > 0) {
+            $('html, body').animate({
+                scrollTop: $('.invalid').first().offset().top - 100
+            }, 500);
+            return;
+        }
+
+        // Form is valid - proceed with submission
+        alert('Profile updated successfully!');
+        // Uncomment to actually submit the form:
+        // this.submit();
+    });
+
+    // ================================
+    // user security validations
+    //================================
+
+    $('.toggle-password').click(function () {
+        const input = $($(this).attr('toggle'));
+        const icon = $(this).find('i');
+        const type = input.attr('type') === 'password' ? 'text' : 'password';
+        input.attr('type', type);
+        icon.toggleClass('fa-eye fa-eye-slash');
+    });
+
+    function isStrongPassword(pw) {
+        return /.{8,}/.test(pw) &&
+            /[A-Z]/.test(pw) &&
+            /\d/.test(pw) &&
+            /[^A-Za-z0-9]/.test(pw);
+    }
+
+    function showError(input, msg) {
+        input.addClass('is-invalid').removeClass('is-valid');
+        input.closest('.input-group').next('.error-text').text(msg);
+    }
+
+    function clearError(input) {
+        input.removeClass('is-invalid').addClass('is-valid');
+        input.closest('.input-group').next('.error-text').text('');
+    }
+
+    $('#username').on('input', function () {
+        $(this).val().trim() ? clearError($(this)) : showError($(this), 'Username is required');
+    });
+
+    $('#current-password').on('input', function () {
+        $(this).val().trim() ? clearError($(this)) : showError($(this), 'Current password is required');
+    });
+
+    $('#new-password').on('input', function () {
+        isStrongPassword($(this).val()) ? clearError($(this)) : showError($(this), '8+ chars, 1 uppercase, 1 number, 1 special char');
+    });
+
+    $('#confirm-password').on('input', function () {
+        const newPass = $('#new-password').val();
+        const confirm = $(this).val();
+        (newPass === confirm) ? clearError($(this)) : showError($(this), 'Passwords do not match');
+    });
+
+    $('#credentialForm').on('submit', function (e) {
+        let valid = true;
+
+        if (!$('#username').val().trim()) {
+            showError($('#username'), 'Username is required');
+            valid = false;
+        }
+
+        if (!$('#current-password').val().trim()) {
+            showError($('#current-password'), 'Current password is required');
+            valid = false;
+        }
+
+        if (!isStrongPassword($('#new-password').val())) {
+            showError($('#new-password'), '8+ chars, 1 uppercase, 1 number, 1 special char');
+            valid = false;
+        }
+
+        if ($('#new-password').val() !== $('#confirm-password').val()) {
+            showError($('#confirm-password'), 'Passwords do not match');
+            valid = false;
+        }
+
+        if (!valid) e.preventDefault();
     });
 
 
-
-
-
-
-
-
-    
 });

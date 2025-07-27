@@ -37,133 +37,153 @@
       <!-- User Profile Update Section -->
       <div class="dashboard-content">
         <div class="container-fluid profile-container">
-          <!-- Heading -->
-          <h4 class="profile-heading">
-            <i class="fas fa-user-cog me-2"></i>Update Your Profile
-          </h4>
-
-          <div class="row">
-            <!-- Left Column - Profile Picture and Documents -->
-            <div class="col-lg-4 profile-left-col">
-              <div class="profile-card">
-                <!-- Profile Photo Upload -->
-                <div class="profile-photo-section">
-                  <div class="profile-photo-container">
-                    <img id="profile-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                      class="profile-photo">
-                    <label for="profile-upload" class="profile-upload-btn">
+          <div class="profile-edit-container">
+            <form id="profileForm" class="profile-form">
+              <!-- Profile Picture Section -->
+              <div class="profile-picture-section">
+                <div class="avatar-upload">
+                  <div class="avatar-preview" id="avatarPreview" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');">
+                  </div>
+                  <div class="avatar-edit">
+                    <input type="file" id="avatarUpload" accept="image/*">
+                    <label for="avatarUpload" class="upload-label">
                       <i class="fas fa-camera"></i>
                     </label>
-                    <input type="file" id="profile-upload" class="d-none" accept="image/*">
                   </div>
-                  <p class="upload-instruction">Click to upload your profile photo</p>
-                  <div id="file-chosen" class="file-status">No file chosen</div>
-                </div>
-
-                <!-- PAN Card Upload -->
-                <div class="document-upload">
-                  <label class="upload-label"><i class="far fa-id-card me-2"></i>Upload PAN Card</label>
-                  <div class="upload-control">
-                    <input type="file" class="form-control" id="pan-upload" accept="image/*,.pdf">
-                    <button class="upload-button" type="button" id="pan-upload-btn">
-                      <i class="fas fa-upload"></i>
-                    </button>
-                  </div>
-                  <div class="upload-note">Accepted formats: JPG, PNG, PDF</div>
+                  <p class="upload-hint">Max 2MB • JPG, PNG</p>
                 </div>
               </div>
-            </div>
 
-            <!-- Right Column - Personal Information -->
-            <div class="col-lg-8">
-              <div class="profile-info-card">
-                <form>
-                  <!-- Full Name -->
+              <!-- Personal Information Section -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <i class="fas fa-user-circle"></i> Personal Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="fullName">
+                    <i class="fas fa-user"></i> Full Name <span class="required">*</span>
+                  </label>
+                  <div class="input-with-feedback">
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                    <span class="valid-feedback"><i class="fas fa-check-circle"></i></span>
+                  </div>
+                  <div class="error-message" id="fullNameError"></div>
+                </div>
+
+                <div class="form-row">
                   <div class="form-group">
-                    <label for="full-name" class="form-label"><i class="fas fa-user me-2"></i>Full Name</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-                      <input type="text" class="form-control" id="full-name" placeholder="Enter your full name">
+                    <label for="phoneNumber">
+                      <i class="fas fa-phone-alt"></i> Phone <span class="required">*</span>
+                    </label>
+                    <div class="input-with-feedback">
+                      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+1 234 567 8900">
+                      <span class="valid-feedback"><i class="fas fa-check-circle"></i></span>
                     </div>
+                    <div class="error-message" id="phoneError"></div>
                   </div>
 
-                  <!-- Contact Information -->
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <label for="phone" class="form-label"><i class="fas fa-phone-alt me-2"></i>Phone Number</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
-                      </div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <label for="email" class="form-label"><i class="fas fa-envelope me-2"></i>Email Address</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-at"></i></span>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Address Information -->
                   <div class="form-group">
-                    <label for="address" class="form-label"><i class="fas fa-home me-2"></i>Home Address</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                      <input type="text" class="form-control" id="address"
-                        value="Shahid Sukumar Banerjee Sarani, Durgapur, West Bengal, India">
+                    <label for="emailAddress">
+                      <i class="fas fa-envelope"></i> Email <span class="required">*</span>
+                    </label>
+                    <div class="input-with-feedback">
+                      <input type="email" id="emailAddress" name="emailAddress" placeholder="your@email.com">
+                      <span class="valid-feedback"><i class="fas fa-check-circle"></i></span>
                     </div>
+                    <div class="error-message" id="emailError"></div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-3 form-group">
-                      <label for="pincode" class="form-label"><i class="fas fa-mailbox me-2"></i>Pin Code</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
-                        <input type="text" class="form-control" id="pincode" value="713200">
-                      </div>
-                    </div>
-                    <div class="col-md-4 form-group">
-                      <label for="city" class="form-label"><i class="fas fa-city me-2"></i>City</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-map-pin"></i></span>
-                        <input type="text" class="form-control" id="city" value="Durgapur">
-                      </div>
-                    </div>
-                    <div class="col-md-5 form-group">
-                      <label for="state" class="form-label"><i class="fas fa-map me-2"></i>State</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-globe-asia"></i></span>
-                        <input type="text" class="form-control" id="state" value="West Bengal">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Submit Button -->
-                  <div class="form-actions">
-                    <button type="submit" class="submit-btn">
-                      <i class="fas fa-check-circle me-2"></i>Update Profile
-                    </button>
-                  </div>
-                </form>
+                </div>
               </div>
-            </div>
+
+              <!-- Address Section -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <i class="fas fa-map-marker-alt"></i> Address Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="streetAddress">
+                    <i class="fas fa-home"></i> Street Address <span class="required">*</span>
+                  </label>
+                  <textarea id="streetAddress" name="streetAddress" rows="2" placeholder="Enter your street address">Shahid Sukumar Banerjee Sarani, Durgapur</textarea>
+                  <div class="error-message" id="addressError"></div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">
+                      <i class="fas fa-city"></i> City <span class="required">*</span>
+                    </label>
+                    <input type="text" id="city" name="city" value="Durgapur">
+                    <div class="error-message" id="cityError"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="state">
+                      <i class="fas fa-globe-americas"></i> State <span class="required">*</span>
+                    </label>
+                    <input type="text" id="state" name="state" value="West Bengal">
+                    <div class="error-message" id="stateError"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="postalCode">
+                    <i class="fas fa-mail-bulk"></i> Postal Code <span class="required">*</span>
+                  </label>
+                  <input type="text" id="postalCode" name="postalCode" value="713200">
+                  <div class="error-message" id="postalCodeError"></div>
+                </div>
+              </div>
+
+              <!-- Documents Section -->
+              <div class="form-section card shadow-sm p-4 rounded-3 mb-4">
+                <h4 class="section-title mb-4 text-primary">
+                  <i class="fas fa-file-upload me-2"></i> Document Uploads
+                </h4>
+
+                <div class="mb-3">
+                  <label for="panCard" class="form-label fw-semibold">
+                    <i class="fas fa-id-card me-1"></i> PAN Card <span class="text-danger">*</span>
+                  </label>
+                  <div class="custom-file-upload">
+                    <input type="file" id="panCard" name="panCard" class="form-control" accept="image/*,.pdf">
+                  </div>
+                  <small class="form-text text-muted">Accepted formats: JPG, PNG, PDF (Max 5MB)</small>
+                  <div class="text-danger mt-1" id="panCardError"></div>
+                </div>
+              </div>
+
+
+              <!-- Submit Button -->
+              <div class="form-actions">
+                <button type="submit" class="submit-button">
+                  <i class="fas fa-save"></i> Save Profile
+                </button>
+              </div>
+            </form>
           </div>
+
         </div>
       </div>
+    </div>
+  </div>
+  </div>
 
 
 
 
 
 
-      <!-- jQuery CDN (if not already included) -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <!-- Bootstrap JS -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Custom JS -->
-      <script src="script.js"></script>
+
+  <!-- jQuery CDN (if not already included) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 </body>
 
 </html>

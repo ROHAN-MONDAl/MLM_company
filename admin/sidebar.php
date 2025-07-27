@@ -5,16 +5,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <!-- Sidebar -->
 <div class="sidebar-nav">
     <!-- User Profile Section -->
-    <div class="user-profile-section d-flex align-items-center">
-        <div class="user-avatar">
-            <img src="https://i.pinimg.com/736x/1c/bc/58/1cbc5864a867efcc76c89c00c2ca530a.jpg" alt="User Avatar"
-                class="user-avatar">
+     <div class="user-profile-section d-flex align-items-center">
+        <div class="user-avatar me-3">
+            <img src="https://i.pinimg.com/736x/1c/bc/58/1cbc5864a867efcc76c89c00c2ca530a.jpg" alt="User Avatar" srcset="" class="user-avatar">
         </div>
-        <div class="user-info ms-auto text-end">
+        <div class="user-info">
             <div class="username fw-bold text-truncate">John Doe</div>
-            <div class="user-rank text-truncate">
-                <i class="fas fa-crown text-warning"></i>
-                <span class="nav-text">Admin</span>
+            <div class="user-rank text-truncate mx-4">
+              
+                <span class="mx-4"> <small><i class="fas fa-crown text-warning"></i> &nbsp</small>Admin</span>
             </div>
         </div>
     </div>

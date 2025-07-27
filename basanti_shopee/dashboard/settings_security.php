@@ -41,7 +41,7 @@
                     <div class="row mb-2 mt-3">
                         <div class="col-12">
                             <h4 class="profile-heading text-center">
-                                <i class="fas fa-user-cog me-2"></i>Update Credentials
+                                <i class="fas fa-user-cog me-2"></i>Update Login Credentials
                             </h4>
                         </div>
                     </div>
@@ -50,22 +50,23 @@
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="profile-card p-4 shadow-lg">
-                                <form>
-                                    <div class="row">
+                                <form id="credentialForm">
+                                    <div class="row justify-content-center">
                                         <!-- Username -->
                                         <div class="col-md-6 mb-4">
-                                            <div class="form-group">
+                                            <div class="form-group text-center">
                                                 <label for="username" class="form-label"><i class="fas fa-user me-2"></i>Username</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text bg-light"><i class="fas fa-at"></i></span>
                                                     <input type="text" class="form-control" id="username" placeholder="Enter your username">
                                                 </div>
+                                                <small class="text-danger error-message error-text mt-1 text-center d-block"></small>
                                             </div>
                                         </div>
 
                                         <!-- Current Password -->
                                         <div class="col-md-6 mb-4">
-                                            <div class="form-group">
+                                            <div class="form-group text-center">
                                                 <label for="current-password" class="form-label"><i class="fas fa-lock me-2"></i>Current Password</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text bg-light"><i class="fas fa-key"></i></span>
@@ -74,14 +75,15 @@
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
+                                                <small class="text-danger error-message error-text mt-1 text-center d-block"></small>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row justify-content-center">
                                         <!-- New Password -->
                                         <div class="col-md-6 mb-4">
-                                            <div class="form-group">
+                                            <div class="form-group text-center">
                                                 <label for="new-password" class="form-label"><i class="fas fa-lock me-2"></i>New Password</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text bg-light"><i class="fas fa-key"></i></span>
@@ -90,12 +92,13 @@
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
+                                                <small class="text-danger error-message error-text mt-1 text-center d-block"></small>
                                             </div>
                                         </div>
 
                                         <!-- Confirm Password -->
                                         <div class="col-md-6 mb-4">
-                                            <div class="form-group">
+                                            <div class="form-group text-center">
                                                 <label for="confirm-password" class="form-label"><i class="fas fa-lock me-2"></i>Confirm Password</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text bg-light"><i class="fas fa-key"></i></span>
@@ -104,16 +107,17 @@
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
+                                                <small class="text-danger error-message error-text mt-1 text-center d-block"></small>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Password Requirements -->
-                                    <div class="row">
-                                        <div class="col-12 mb-4">
-                                            <div class="password-requirements p-3 bg-light rounded">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-10 mb-4">
+                                            <div class="password-requirements p-3 bg-light rounded text-center">
                                                 <p class="mb-2"><strong>Password Requirements:</strong></p>
-                                                <ul class="list-unstyled mb-0 row">
+                                                <ul class="list-unstyled mb-0 row justify-content-center">
                                                     <li class="col-md-3"><i class="fas fa-check-circle text-success me-2"></i>8+ characters</li>
                                                     <li class="col-md-3"><i class="fas fa-check-circle text-success me-2"></i>1 uppercase</li>
                                                     <li class="col-md-3"><i class="fas fa-check-circle text-success me-2"></i>1 number</li>
@@ -126,12 +130,13 @@
                                     <!-- Submit Button -->
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <button type="submit" class="btn btn-primary btn-md px-5 py-2 shadow-sm">
-                                                <i class="fas fa-check-circle me-2"></i>Update
+                                            <button type="submit" class="btn btn-primary btn-lg px-5 py-2 shadow-sm">
+                                                <i class="fas fa-check-circle me-2"></i>Update Credentials
                                             </button>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>

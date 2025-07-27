@@ -12,6 +12,17 @@
           --sidebar-width: 250px;
           --sidebar-collapsed-width: 80px;
           --transition-time: 0.3s;
+          --primary-color: #4361ee;
+          --primary-hover: #3a56d4;
+          --error-color: #ff0000;
+          --success-color: #4cc9f0;
+          --text-color: #2b2d42;
+          --light-gray: #f8f9fa;
+          --medium-gray: #e9ecef;
+          --dark-gray: #6c757d;
+          --border-radius: 8px;
+          --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          --transition: all 0.3s ease;
         }
 
         /* ===========================================
@@ -941,202 +952,263 @@
         }
 
         /* ===========================================
-          PROFILE SECTION STYLES FOR SETTINGS PAGE
-          =========================================== */
-        /* Profile Section Styles */
-        .profile-container {
-          padding: 1.5rem 2rem;
+   PROFILE SECTION STYLES FOR SETTINGS PAGE
+   =========================================== */
+        .profile-edit-container {
+          max-width: 900px;
+          margin: 0 auto;
+          background: white;
+          border-radius: var(--border-radius);
+          box-shadow: var(--box-shadow);
+          overflow: hidden;
+          padding: 25px;
         }
 
-        .profile-heading {
-          color: var(--color-navy);
-          font-weight: bold;
+        .profile-picture-section {
           text-align: center;
-          margin-bottom: 2rem;
-          font-size: 1.5rem;
+          margin-bottom: 30px;
         }
 
-        /* Left Column Styles */
-        .profile-card {
-          background-color: var(--color-white);
-          border: 1px solid rgba(11, 31, 63, 0.1);
-          border-radius: 8px;
-          padding: 1.5rem;
-          height: 100%;
-          box-shadow: 0 2px 8px rgba(11, 31, 63, 0.05);
-        }
-
-        .profile-photo-section {
-          text-align: center;
-          margin-bottom: 2rem;
-        }
-
-        .profile-photo-container {
+        .avatar-upload {
           position: relative;
           display: inline-block;
+          margin-bottom: 15px;
         }
 
-        .profile-photo {
-          width: 150px;
-          height: 150px;
-          object-fit: cover;
-          border-radius: 8px;
-          margin-bottom: 1rem;
+        .avatar-preview {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: center;
+          border: 4px solid white;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
-        .profile-upload-btn {
+        .avatar-edit {
           position: absolute;
-          bottom: 15px;
-          right: 15px;
-          width: 36px;
-          height: 36px;
-          background-color: var(--color-blue);
-          color: var(--color-white);
-          border-radius: 6px;
+          right: 0;
+          bottom: 0;
+        }
+
+        .avatar-edit input {
+          display: none;
+        }
+
+        .avatar-edit .upload-label {
           display: flex;
           align-items: center;
           justify-content: center;
+          width: 36px;
+          height: 36px;
+          background: var(--primary-color);
+          color: white;
+          border-radius: 50%;
           cursor: pointer;
-          transition: all var(--transition-time);
+          transition: var(--transition);
         }
 
-        .profile-upload-btn:hover {
-          background-color: var(--color-navy);
+        .avatar-edit .upload-label:hover {
+          background: var(--primary-hover);
         }
 
-        .upload-instruction {
-          font-size: 0.9rem;
-          color: var(--color-navy);
-          opacity: 0.7;
-          margin-bottom: 0.25rem;
+        .upload-hint {
+          color: var(--dark-gray);
+          font-size: 13px;
+          margin-top: 8px;
         }
 
-        .file-status {
-          font-size: 0.8rem;
-          color: var(--color-navy);
-          opacity: 0.5;
-          font-style: italic;
+        .form-section {
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid var(--medium-gray);
         }
 
-        /* Document Upload Styles */
-        .upload-label {
-          font-weight: 600;
-          color: var(--color-navy);
-          display: block;
-          margin-bottom: 0.75rem;
-          font-size: 0.95rem;
-        }
-
-        .upload-control {
+        .section-title {
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+          color: var(--text-color);
           display: flex;
-          margin-bottom: 0.5rem;
+          align-items: center;
+          gap: 10px;
         }
 
-        .upload-control .form-control {
-          border: 1px solid rgba(11, 31, 63, 0.2);
-          border-right: none;
-          border-radius: 6px 0 0 6px;
+        .section-title i {
+          color: var(--primary-color);
         }
 
-        .upload-button {
-          background-color: var(--color-white);
-          border: 1px solid rgba(11, 31, 63, 0.2);
-          border-left: none;
-          border-radius: 0 6px 6px 0;
-          padding: 0 1rem;
-          color: var(--color-blue);
-          transition: all var(--transition-time);
-        }
-
-        .upload-button:hover {
-          background-color: rgba(57, 117, 217, 0.1);
-        }
-
-        .upload-note {
-          font-size: 0.75rem;
-          color: var(--color-navy);
-          opacity: 0.5;
-          margin-top: 0.25rem;
-        }
-
-        /* Right Column Styles */
-        .profile-info-card {
-          background-color: var(--color-white);
-          border: 1px solid rgba(11, 31, 63, 0.1);
-          border-radius: 8px;
-          padding: 1.5rem;
-          height: 100%;
-          box-shadow: 0 2px 8px rgba(11, 31, 63, 0.05);
-        }
-
-        /* Form Styles */
         .form-group {
-          margin-bottom: 1.5rem;
+          margin-bottom: 20px;
         }
 
-        .form-label {
-          font-weight: 600;
-          color: var(--color-navy);
+        .form-group label {
           display: block;
-          margin-bottom: 0.5rem;
-          font-size: 0.95rem;
-        }
-
-        .input-group-text {
-          background-color: rgba(57, 117, 217, 0.1);
-          color: var(--color-blue);
-          border: 1px solid rgba(11, 31, 63, 0.1);
-          border-right: none;
-        }
-
-        .form-control {
-          border: 1px solid rgba(11, 31, 63, 0.2);
-          border-radius: 6px;
-          padding: 0.75rem 1rem;
-          transition: border var(--transition-time);
-          color: var(--color-navy);
-        }
-
-        .form-control:focus {
-          border-color: var(--color-blue);
-          box-shadow: 0 0 0 0.2rem rgba(57, 117, 217, 0.1);
-        }
-
-        /* Submit Button */
-        .form-actions {
-          text-align: right;
-          margin-top: 2rem;
-        }
-
-        .submit-btn {
-          background-color: var(--color-blue);
-          color: var(--color-white);
-          border: none;
-          border-radius: 6px;
-          padding: 0.75rem 2rem;
+          margin-bottom: 8px;
           font-weight: 600;
-          transition: all var(--transition-time);
+          display: flex;
+          align-items: center;
+          gap: 8px;
         }
 
-        .submit-btn:hover {
-          background-color: var(--color-navy);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(57, 117, 217, 0.2);
+        .form-group label i {
+          width: 18px;
+          text-align: center;
+          color: var(--primary-color);
         }
 
-        /* Icons */
-        .fas,
-        .far {
-          font-size: 1rem;
+        .required {
+          color: var(--error-color);
+          font-size: 0.9em;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-          .profile-left-col {
-            margin-bottom: 2rem;
+        .input-with-feedback {
+          position: relative;
+        }
+
+        .input-with-feedback input {
+          padding-right: 40px;
+        }
+
+        .valid-feedback {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--success-color);
+          opacity: 0;
+          transition: var(--transition);
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid var(--medium-gray);
+          border-radius: var(--border-radius);
+          font-size: 15px;
+          transition: var(--transition);
+          background-color: var(--light-gray);
+        }
+
+        input:focus,
+        textarea:focus {
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+          outline: none;
+          background-color: white;
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 80px;
+        }
+
+        .error-message {
+          font-weight: bold;
+          color: var(--error-color);
+          font-size: 13px;
+          margin-top: 5px;
+          height: 18px;
+        }
+
+
+
+        .form-section {
+          background-color: #ffffff;
+          border: 1px solid #e0e0e0;
+        }
+
+        .section-title {
+          font-weight: 600;
+          font-size: 1.25rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .custom-file-upload input[type="file"] {
+          padding: 10px;
+          cursor: pointer;
+          border: 1px solid #ced4da;
+          border-radius: 0.375rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .custom-file-upload input[type="file"]:hover {
+          border-color: #86b7fe;
+          background-color: #f8f9fa;
+        }
+
+        .required {
+          color: #dc3545;
+        }
+
+        #error-message {
+          font-size: 0.875rem;
+        }
+
+
+
+
+        .submit-button {
+          background: var(--primary-color);
+          color: white;
+          border: none;
+          padding: 12px 25px;
+          border-radius: var(--border-radius);
+          font-weight: 600;
+          font-size: 16px;
+          cursor: pointer;
+          transition: var(--transition);
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .submit-button:hover {
+          background: var(--primary-hover);
+          box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Validation States */
+        .valid {
+          border-color: var(--success-color) !important;
+        }
+
+        .valid+.valid-feedback {
+          opacity: 1;
+        }
+
+        .invalid {
+          border-color: var(--error-color) !important;
+        }
+
+        /* Responsive Layout */
+        .form-row {
+          display: flex;
+          gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+          .profile-edit-container {
+            padding: 15px;
           }
 
-          .profile-container {
-            padding: 1rem;
+          .form-row {
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .avatar-preview {
+            width: 100px;
+            height: 100px;
+          }
+
+          .section-title {
+            font-size: 1.1rem;
+          }
+
+          input,
+          textarea {
+            padding: 10px 12px;
           }
         }
