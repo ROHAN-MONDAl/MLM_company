@@ -16,6 +16,7 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="../basanti_shopee/dashboard/style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
 </head>
 
 <body>
@@ -38,10 +39,9 @@
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="container-fluid p-3 p-md-4">
-                    <!-- Dashboard Title -->
+                    
 
                 </div>
-
             </div>
             <!-- End Dashboard Content -->
 
