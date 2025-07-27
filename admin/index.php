@@ -15,7 +15,7 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="../basanti_shopee/dashboard/style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -233,7 +233,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Custom JS -->
     <script src="../basanti_shopee/dashboard/script.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 
 </html>

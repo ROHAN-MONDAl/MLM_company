@@ -1,0 +1,99 @@
+/* ===================================================
+   Color Variables
+=================================================== */
+:root {
+    --color-yellow: #FFB427;
+    --color-blue: #3975D9;
+    --color-navy: #0B1F3F;
+    --color-white: #FFFFFF;
+    --color-dark: #0A1626;
+    --color-light-dark: #1A2A42;
+    --color-green: #33ff00;
+    --color-red: #ff002b;
+    --color-light-gray: #b0b0b0;
+}
+
+/* ===================================================
+   Card Styling
+=================================================== */
+.card {
+    border: 1px solid var(--color-navy);
+    border-radius: 0.5rem;
+
+  }
+
+/* ===================================================
+   Form Labels
+=================================================== */
+label {
+    color: var(--color-dark);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* ===================================================
+   Input and Textarea Styling
+=================================================== */
+.form-control {
+    color: var(--color-dark);
+    border: 1px solid var(--color-light-gray);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--color-blue);
+    outline: none;
+}
+
+/* ===================================================
+   Placeholder Styling
+=================================================== */
+::placeholder {
+    color: var(--color-light-gray);
+    opacity: 1;
+}
+
+/* ===================================================
+   Validation Feedback
+=================================================== */
+input:valid,
+textarea:valid {
+    border-color: var(--color-green);
+}
+
+input:invalid:focus,
+textarea:invalid:focus {
+    border-color: var(--color-red);
+}
+
+/* ===================================================
+   Submit Button Styling
+=================================================== */
+button[type="submit"] {
+    background-color: var(--color-blue);
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.3rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+/* ===================================================
+   Responsive Tweaks
+=================================================== */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+    }
+}

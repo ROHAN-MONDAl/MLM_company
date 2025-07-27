@@ -574,7 +574,8 @@
     .dashboard-profile-grid {
         justify-content: center;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px; /* optional: adds spacing between cards */
+        gap: 10px;
+        /* optional: adds spacing between cards */
     }
 
     .dashboard-tab-button {
@@ -583,7 +584,8 @@
     }
 
     .dashboard-tab-content {
-        padding: -15px !important; /* fix: -15px is invalid */
+        padding: -15px !important;
+        /* fix: -15px is invalid */
     }
 }
 
