@@ -42,7 +42,7 @@
                     <div class="col-md-12">
                         <div class="card shadow-lg border border-primary rounded-4 p-4">
 
-                            <h3 class="text-center mb-4"><i class="fas fa-box-open me-2"></i>Add Product</h3>
+                            <h3 class="text-center mb-4"><i class="fas fa-box-open me-2"></i><b>Add Product</b></h3>
                             <form id="productForm" novalidate>
                                 <!-- Image Upload -->
                                 <div class="mb-3">

@@ -41,7 +41,7 @@
                     <div class="row mb-2 mt-3">
                         <div class="col-12">
                             <h4 class="profile-heading text-center">
-                                <i class="fas fa-user-cog me-2"></i>Update Login Credentials
+                                <i class="fas fa-user-cog me-2"></i>Update Credentials
                             </h4>
                         </div>
                     </div>
@@ -126,8 +126,8 @@
                                     <!-- Submit Button -->
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <button type="submit" class="btn btn-primary btn-lg px-5 py-2 shadow-sm">
-                                                <i class="fas fa-check-circle me-2"></i>Update Credentials
+                                            <button type="submit" class="btn btn-primary btn-md px-5 py-2 shadow-sm">
+                                                <i class="fas fa-check-circle me-2"></i>Update
                                             </button>
                                         </div>
                                     </div>

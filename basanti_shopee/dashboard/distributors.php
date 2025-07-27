@@ -40,7 +40,7 @@
                 <div class="container-fluid p-3 p-md-4">
                     <!-- Heading -->
                     <h4 class="mb-4 fw-bold text-center" style="color: var(--color-navy);">
-                        Our Distributors
+                        Distributors
                     </h4>
 
                     <!-- Distributors Grid -->

@@ -39,9 +39,9 @@
                 <div class="container-fluid p-3 p-md-4">
                     <!-- Heading -->
                     <h4 class="mb-4 fw-bold text-center" style="color: var(--color-navy);">
-                        Group Members
+                       <b>Referral Joiners</b>
                     </h4>
-                    <p class="text-lg-start text-center fw-bold fs-4 mt-3 mx-auto">Total Members: <b>2</b></p>
+                    <p class="text-lg-start text-center fw-bold fs-4 mt-3 mx-auto">Total Referral Joiners: <b>2</b></p>
                     <!-- Members Grid -->
                     <div class="row g-4">
                         <!-- Member Card -->

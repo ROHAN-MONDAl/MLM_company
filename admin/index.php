@@ -176,7 +176,7 @@
                                         <label for="bannerImage" class="form-label">Choose Banner Image</label>
                                         <input type="file" class="form-control" id="bannerImage" accept="image/*">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary mx-auto d-block">
                                         <i class="fas fa-upload me-1"></i>Upload Banner
                                     </button>
                                 </form>

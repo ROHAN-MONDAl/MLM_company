@@ -86,8 +86,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <li>
                             <a href="distributor_groups.php"
                                 class="nav-link <?= ($current_page == 'distributor_groups.php') ? 'active' : '' ?>">
-                                <i class="fas fa-layer-group"></i>
-                                <span class="nav-text">Groups</span>
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span class="nav-text">Referral Joiners</span>
                             </a>
                         </li>
                     </ul>
