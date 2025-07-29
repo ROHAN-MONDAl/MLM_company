@@ -31,13 +31,6 @@ $(document).ready(function () {
         $('#panUploadOptions').hide();
     });
 
-    // Trigger camera upload
-    $('#panTakePhoto').click(function (e) {
-        e.stopPropagation();
-        $('#panCardCamera').click(); // Open camera
-        $('#panUploadOptions').hide();
-    });
-
     // Trigger file upload
     $('#panUploadFile').click(function (e) {
         e.stopPropagation();
@@ -62,79 +55,76 @@ $(document).ready(function () {
      *  3. Detect Location (Geo + API)
      *  ----------------------------
      */
-    $('#getLocationBtn').click(function () {
-        const $locationStatus = $('#locationStatus');
-        const $address = $('#address');
-        const $pincode = $('#pincode');
-        const $city = $('#city');
-        const $state = $('#state');
 
-        $locationStatus.html('<i class="fas fa-spinner fa-spin"></i> Detecting your location...');
+   $('#getLocationBtn').click(async function () {
+        $('#status').text("Getting your location...");
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
+        if (!navigator.geolocation) {
+            $('#status').text("Geolocation is not supported by your browser.");
+            return;
+        }
 
-                    // Fetch address from coordinates using Nominatim API
-                    $.ajax({
-                        url: `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`,
-                        method: 'GET',
-                        success: function (data) {
-                            if (data.address) {
-                                const addr = data.address;
-                                let fullAddress = [];
-
-                                if (addr.road) fullAddress.push(addr.road);
-                                if (addr.suburb) fullAddress.push(addr.suburb);
-                                if (addr.city || addr.town || addr.village) fullAddress.push(addr.city || addr.town || addr.village);
-                                if (addr.state) fullAddress.push(addr.state);
-                                if (addr.country) fullAddress.push(addr.country);
-
-                                $address.val(fullAddress.join(', '));
-                                $pincode.val(addr.postcode || '');
-                                $city.val(addr.city || addr.town || addr.village || '');
-                                $state.val(addr.state || '');
-
-                                $locationStatus.html('<i class="fas fa-check-circle text-success"></i> Location detected! Please verify your details');
-                            } else {
-                                $locationStatus.html('<i class="fas fa-exclamation-circle text-warning"></i> Address not found. Enter manually.');
-                            }
-                        },
-                        error: function () {
-                            $locationStatus.html('<i class="fas fa-exclamation-circle text-warning"></i> Failed to get address. Please enter manually.');
-                        }
-                    });
-                },
-                function (error) {
-                    let errorMsg = 'Error detecting location: ';
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            errorMsg += 'Permission denied';
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            errorMsg += 'Position unavailable';
-                            break;
-                        case error.TIMEOUT:
-                            errorMsg += 'Request timed out';
-                            break;
-                        default:
-                            errorMsg += 'Unknown error';
-                    }
-                    $locationStatus.html(`<i class="fas fa-exclamation-circle text-danger"></i> ${errorMsg}`);
-                },
-                {
+        // Promisify the geolocation API
+        const getPosition = () => {
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject, {
                     enableHighAccuracy: true,
-                    timeout: 10000,
+                    timeout: 15000,
                     maximumAge: 0
+                });
+            });
+        };
+
+        try {
+            const position = await getPosition();
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const reverseGeocodeUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode';
+
+            const params = {
+                location: `${lon},${lat}`,
+                f: 'json'
+            };
+
+            $('#status').text("Fetching address from coordinates...");
+
+            const response = await $.getJSON(reverseGeocodeUrl, params);
+
+            if (response && response.address) {
+                const addr = response.address;
+                $('#address').val(addr.Match_addr || '');
+                $('#city').val(addr.City || '');
+                $('#state').val(addr.Region || '');
+                $('#pincode').val(addr.Postal || '');
+                $('#status').text("Location detected successfully!");
+            } else {
+                $('#status').text("Unable to extract address from response.");
+            }
+
+        } catch (error) {
+            let message = "An error occurred.";
+            if (error.code) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        message = "Location access denied by user.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        message = "Location information is unavailable.";
+                        break;
+                    case error.TIMEOUT:
+                        message = "Location request timed out.";
+                        break;
+                    default:
+                        message = "Unknown error occurred.";
                 }
-            );
-        } else {
-            $locationStatus.html('<i class="fas fa-exclamation-circle text-danger"></i> Your browser does not support location.');
+            } else if (error.responseJSON) {
+                message = "Failed to fetch address from the API.";
+            }
+
+            $('#status').text("Error: " + message);
         }
     });
-
     /** ----------------------------
      *  4. Form Validation + Success Modal
      *  ----------------------------
@@ -300,14 +290,21 @@ $(document).ready(function () {
      */
 
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('registration') === 'success') {
+    if (urlParams.get('success') === 'true') {
+
+        const membersId = urlParams.get('members_id');
+
+        if (membersId) {
+            $('#memberIdDisplay').text("Your Member ID: " + membersId);
+        }
+
         const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
         thankYouModal.show();
 
-        // Redirect to index.php after 3 seconds (3000 milliseconds)
+        // Redirect to clean URL after 4 seconds
         setTimeout(function () {
-            window.location.href = 'index.php';
-        }, 3000);
+            window.location.href = window.location.origin + window.location.pathname;
+        }, 4000);
     }
 
     /** ----------------------------
