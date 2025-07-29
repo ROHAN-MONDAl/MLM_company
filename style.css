@@ -33,7 +33,7 @@
 /* Body styling with background image and overlay */
 body {
     background-image: linear-gradient(rgba(11, 31, 63, 0.85), rgba(11, 31, 63, 0.85)),
-        url('../images/background_Image.avif'); /* Semi-transparent overlay over background image */
+        url('images/background_Image.avif'); /* Semi-transparent overlay over background image */
     background-size: cover;                  /* Cover entire viewport */
     background-position: center;             /* Center the background */
     background-attachment: fixed;            /* Fixed background on scroll */

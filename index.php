@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basanti Shopee</title>
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="{{ asset('registrations/images/favicon.svg') }}" class="rounded-5" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.svg" class="rounded-5" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom css -->
-    <link rel="stylesheet" href="{{ asset('registrations/css/style.css') }}">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-dark">
         <div class="container justify-content-center align-items-center">
             <a class="navbar-brand d-flex align-items-center gap-2 mx-auto text-white" href="index.php">
-                <img src="{{ asset('registrations/images/logo.jpeg') }}" class="logo img-fluid"
+                <img src="images/logo.jpeg" class="logo img-fluid"
                     alt="Basanti Shopee Logo">
                 <span class="brand-text">Basanti Shopee</span>
             </a>
@@ -39,7 +39,7 @@
 
                     <form id="mlmRegistrationForm" method="POST" action="{{ route('register') }}"
                         enctype="multipart/form-data">
-                        @csrf
+                      
                         <!-- Profile Picture Upload -->
                         <div class="profile-pic-container">
                             <i class="fas fa-user-circle icon"></i>
@@ -48,21 +48,7 @@
                         </div>
                         <p class="text-center mb-4">Click to upload your profile photo</p>
 
-                        {{-- Error Message for duplicate entries --}}
-                        @error('error')
-                            <div class="alert alert-danger d-flex align-items-center gap-2 shadow-sm rounded-3 px-4 py-3 mt-3 position-relative"
-                                role="alert">
-                                <i class="fas fa-exclamation-circle fa-lg me-2 text-danger"></i>
-                                <div class="flex-grow-1">
-                                    {{ $message }}
-                                </div>
-                                <button type="button"
-                                    class="btn-close position-absolute top-50 end-0 translate-middle-y me-3"
-                                    data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @enderror
-
-
+                    
                         <!-- Personal Information -->
                         <div class="row">
                             <div class="col-md-6">
@@ -273,7 +259,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Js -->
-    <script src="{{ asset('registrations/js/script.js') }}"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
