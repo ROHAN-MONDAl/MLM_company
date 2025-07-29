@@ -9,39 +9,52 @@ $(document).ready(function () {
         input.next('.invalid-feedback').hide();
     }
 
+    function validateUsername(username) {
+        const val = username.val().trim();
+        if (val === '') {
+            showError(username, 'Username is required');
+            return false;
+        } else if (!/^[a-zA-Z0-9]+$/.test(val)) {
+            showError(username, 'Only letters and numbers allowed');
+            return false;
+        } else if (val.length < 4 || val.length > 20) {
+            showError(username, 'Username must be 4–20 characters');
+            return false;
+        }
+        removeError(username);
+        return true;
+    }
+
+    function validatePassword(password) {
+        const val = password.val().trim();
+        const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+        if (val === '') {
+            showError(password, 'Password is required');
+            return false;
+        } else if (!strongPassword.test(val)) {
+            showError(password, 'Min 8 chars with upper, lower, number, special');
+            return false;
+        }
+        removeError(password);
+        return true;
+    }
+
     function validateForm() {
-        let valid = true;
         const username = $('#username');
         const password = $('#password');
+        let valid = true;
 
-        // Username validation
-        if (username.val().trim() === '') {
-            showError(username, 'Please enter your username');
-            valid = false;
-        } else {
-            removeError(username);
-        }
-
-        // Password validation
-        if (password.val().trim() === '') {
-            showError(password, 'Please enter your password');
-            valid = false;
-        } else if (password.val().length < 6) {
-            showError(password, 'Password must be at least 6 characters');
-            valid = false;
-        } else {
-            removeError(password);
-        }
+        if (!validateUsername(username)) valid = false;
+        if (!validatePassword(password)) valid = false;
 
         return valid;
     }
 
-    // Real-time validation on input
     $('#username, #password').on('input', function () {
         validateForm();
     });
 
-    // Submit handler
     $('#loginForm').on('submit', function (e) {
         e.preventDefault();
 
@@ -50,7 +63,6 @@ $(document).ready(function () {
             $('#loginText').addClass('visually-hidden');
             $('#loginSpinner').removeClass('visually-hidden');
 
-            // Simulate login delay
             setTimeout(function () {
                 alert('Login successful!');
                 $('#loginForm')[0].reset();
@@ -62,6 +74,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 // footer year auto update
 document.getElementById('year').textContent = new Date().getFullYear();

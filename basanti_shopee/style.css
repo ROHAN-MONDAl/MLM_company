@@ -1,195 +1,312 @@
-      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+/* Import Nunito Sans font from Google Fonts with various weights and styles */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-      :root {
-          --color-yellow: #FFB427;
-          --color-blue: #3975D9;
-          --color-navy: #0B1F3F;
-          --color-white: #FFFFFF;
-      }
+/* Define CSS variables for consistent color scheme throughout the site */
+:root {
+    --color-yellow: #FFB427;
+    /* Primary accent color */
+    --color-blue: #3975D9;
+    /* Secondary color */
+    --color-navy: #0B1F3F;
+    /* Dark background color */
+    --color-white: #FFFFFF;
+    /* Text color for dark backgrounds */
+}
 
-      * {
-          font-family: "Nunito Sans", sans-serif;
-          font-optical-sizing: auto;
-          font-weight: bold;
-          font-style: normal;
-          font-variation-settings:
-              "wdth" 100,
-              "YTLC" 500;
-      }
+/* Global styles applied to all elements */
+* {
+    font-family: "Nunito Sans", sans-serif;
+    /* Use imported font as default */
+    font-optical-sizing: auto;
+    /* Optimize text for viewing distance */
+    font-weight: bold;
+    /* Default font weight */
+    font-style: normal;
+    /* Default font style (not italic) */
+    font-variation-settings:
+        "wdth" 100,
+        /* Width setting */
+        "YTLC" 500;
+    /* Custom font variation setting */
+}
 
-      html,
-      body {
-          height: 100%;
-          margin: 0;
-          overflow-x: hidden;
-          background-image: url('../images/background_Image.avif');
-          background-size: cover;
-          background-position: center;
-          position: relative;
-      }
+/* HTML and body element styles */
+html,
+body {
+    height: 100%;
+    /* Full viewport height */
+    margin: 0;
+    /* Remove default margin */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
 
-      body::before {
-          content: '';
-          position: fixed;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background-color: var(--color-blue);
-          opacity: 0.8;
-          z-index: -1;
-      }
+/* Background image overlay - creates the full-page background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/img2.avif');
+    /* Background image */
+    background-size: cover;
+    /* Cover entire area */
+    background-position: center;
+    /* Center the image */
+    z-index: -2;
+    /* Behind content but above default background */
+}
 
-      .page-wrapper {
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-      }
+/* Dark overlay to improve text readability on background image */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.63);
+    /* Semi-transparent black overlay */
+    z-index: -1;
+    /* Between background image and content */
+}
 
-      .page-header,
-      .page-footer {
-          background-color: var(--color-navy);
-          color: white;
-          padding: 15px;
-          flex-shrink: 0;
-          text-align: center;
-      }
+/* Main page layout container */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Stack children vertically */
+    min-height: 100vh;
+    /* At least full viewport height */
+}
 
-      .navbar {
-          background-color: var(--color-navy);
-          border-bottom: 3px solid var(--color-yellow);
-      }
+/* Header and footer shared styles */
+.page-header,
+.page-footer {
+    background-color: var(--color-navy);
+    /* Dark background */
+    color: white;
+    /* Light text */
+    padding: 15px;
+    /* Internal spacing */
+    flex-shrink: 0;
+    /* Prevent shrinking in flex layout */
+    text-align: center;
+    /* Center content */
+}
 
+/* Navigation bar styles */
+.navbar {
+    background-color: var(--color-navy);
+    /* Dark background */
+    border-bottom: 3px solid var(--color-yellow);
+    /* Yellow accent border */
+}
 
-      .navbar-brand {
-          font-weight: bolder;
-          white-space: nowrap;
-          /* Prevent line break */
-          color: var(--color-yellow) !important;
-          font-size: 1.8rem;
+/* Brand/logo text in navbar */
+.navbar-brand {
+    font-weight: bolder;
+    /* Extra bold text */
+    white-space: nowrap;
+    /* Prevent line breaks */
+    color: var(--color-yellow) !important;
+    /* Yellow color with high specificity */
+    font-size: 1.8rem;
+    /* Larger font size */
+}
 
-      }
+/* Logo image styling */
+.logo {
+    width: 60px;
+    /* Fixed width */
+    height: 60px;
+    /* Fixed height */
+    object-fit: cover;
+    /* Maintain aspect ratio */
+    border-radius: 12px;
+    /* Rounded corners */
+}
 
-      .logo {
-          width: 60px;
-          height: 60px;
-          object-fit: cover;
-          border-radius: 12px;
-      }
+/* Navigation link styles */
+.nav-link {
+    color: var(--color-white) !important;
+    /* White text */
+    margin: 0 10px;
+    /* Horizontal spacing */
+    font-weight: 500;
+    /* Medium weight */
+}
 
-      .nav-link {
-          color: var(--color-white) !important;
-          margin: 0 10px;
-          font-weight: 500;
-      }
+/* Hover state for navigation links */
+.nav-link:hover {
+    color: var(--color-yellow) !important;
+    /* Yellow on hover */
+}
 
-      .nav-link:hover {
-          color: var(--color-yellow) !important;
-      }
+/* Footer specific styles */
+.page-footer {
+    font-size: 12px;
+    /* Smaller text */
+    text-align: center;
+    /* Centered content */
+}
 
+/* Footer link styles */
+.page-footer a {
+    color: var(--color-white);
+    /* White text */
+    text-decoration: none;
+    /* No underline */
+}
 
-      .page-footer {
-          font-size: 12px;
-          text-align: center;
-      }
+/* Main content area for login form */
+.login-section {
+    flex: 1;
+    /* Take remaining vertical space */
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    padding: 40px 15px;
+    /* Add some spacing */
+}
 
-         .page-footer a{
-            color: var(--color-white);
-         text-decoration: none;
-      }
+/* Login card container */
+.login-card {
+    background-color: #fff;
+    /* White background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    max-width: 420px;
+    /* Limit width */
+    width: 100%;
+    /* Responsive width */
+    padding: 35px 25px;
+    /* Internal spacing */
+    min-height: 580px;
+    /* Minimum height */
+}
 
-      .login-section {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 40px 15px;
-      }
+/* Login form logo */
+.login-logo {
+    max-height: 160px;
+    /* Limit size */
+    max-width: 160px;
+    /* Limit size */
+    display: block;
+    /* Block display */
+    margin: 0 auto 15px;
+    /* Centered with bottom margin */
+    border-radius: 50%;
+    /* Circular shape */
+}
 
-      .login-card {
-          background-color: #fff;
-          border-radius: 15px;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-          max-width: 420px;
-          width: 100%;
-          padding: 35px 25px;
-          min-height: 580px;
-      }
+/* Heading styles */
+h2 {
+    text-align: center;
+    /* Centered text */
+    color: var(--color-navy);
+    /* Yellow color */
+    font-size: 2em;
+    font-weight: bold;
+    /* Bold weight */
+    margin-bottom: 5px;
+    /* Bottom spacing */
+}
 
-      .login-logo {
-        max-height: 160px;
-          max-width: 160px;
-          display: block;
-          margin: 0 auto 15px;
-          border-radius: 50%;
-      }
+h4 {
+    text-align: center;
+    /* Centered text */
+    font-weight: 600;
+    /* Semi-bold weight */
+    margin-bottom: 20px;
+    /* Bottom spacing */
+}
 
-      h2 {
-          text-align: center;
-          color: var(--color-yellow);
-          font-weight: 700;
-          margin-bottom: 5px;
-      }
+/* Form input focus state */
+.form-control:focus {
+    border-color: var(--color-blue);
+    /* Blue border when focused */
+    box-shadow: none;
+    /* Remove default shadow */
+}
 
-      h4 {
-          text-align: center;
-          font-weight: 600;
-          margin-bottom: 20px;
-      }
+/* Login button styles */
+.btn-login {
+    background-color: var(--color-yellow);
+    /* Yellow background */
+    color: white;
+    /* White text */
+    width: 100%;
+    /* Full width */
+}
 
-      .form-control:focus {
-          border-color: var(--color-blue);
-          box-shadow: none;
-      }
+/* Disabled login button state */
+.btn-login:disabled {
+    opacity: 0.7;
+    /* Semi-transparent */
+}
 
-      .btn-login {
-          background-color: var(--color-yellow);
-          color: white;
-          width: 100%;
-      }
+/* Login button hover state */
+.btn-login:hover:not(:disabled) {
+    color: var(--color-white);
+    /* White text */
+    background-color: #08152a;
+    /* Dark blue background */
+}
 
-      .btn-login:disabled {
-          opacity: 0.7;
-      }
+/* Forgot password link container */
+.forgot-link {
+    text-decoration: none;
+    /* No underline */
+    text-align: center;
+    /* Centered text */
+    margin-top: 20px;
+    /* Top spacing */
+    font-size: 16px;
+    /* Font size */
+}
 
-      .btn-login:hover:not(:disabled) {
-          color: var(--color-white);
-          background-color: #08152a;
-      }
+/* Forgot password link */
+.forgot-link a {
+    text-decoration: none;
+    /* No underline */
+}
 
-      .forgot-link {
-          text-decoration: none;
-          text-align: center;
-          margin-top: 20px;
-          font-size: 16px;
-      }
+/* Loading spinner styles */
+#loginSpinner {
+    display: inline-block;
+    /* Inline block display */
+    vertical-align: middle;
+    /* Vertical alignment */
+    margin-left: 8px;
+    /* Left spacing */
+}
 
-      .forgot-link a{
-          text-decoration: none;
-      }
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Scrollbar width */
+}
 
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-navy);
+    /* Dark scrollbar thumb */
+    border-radius: 5px;
+    /* Rounded corners */
+}
 
-      /* Spinner fix */
-      #loginSpinner {
-          display: inline-block;
-          vertical-align: middle;
-          margin-left: 8px;
-      }
-
-      ::-webkit-scrollbar {
-          width: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-          background-color: var(--color-navy);
-          border-radius: 5px;
-      }
-
-
-      @media (max-width: 576px) {
-          .page-header {
-              flex-direction: column;
-              /* ❌ This causes stacking */
-              gap: 6px;
-          }
-      }
+/* Mobile responsiveness for small screens */
+@media (max-width: 576px) {
+    .page-header {
+        flex-direction: column;
+        /* Stack header items vertically */
+        gap: 6px;
+        /* Spacing between stacked items */
+    }
+}

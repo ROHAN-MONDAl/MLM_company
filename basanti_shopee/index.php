@@ -33,12 +33,10 @@
         <!-- LOGIN FORM -->
         <div class="login-section">
             <div class="login-card">
+                 <h2>WELCOME</h2>
                 <img src="../images/logo.jpeg" alt="Logo" class="login-logo">
-                <h2>WELCOME</h2>
-                <h4>Sign In</h4>
-
-                <!-- Your Login Form -->
-                <form id="loginForm" novalidate>
+                               <!-- Your Login Form -->
+                <form id="loginForm" action="" method="POST" novalidate>
                     <div class="mb-3">
                         <label class="form-label"><i class="fa fa-user"></i> Username</label>
                         <input type="text" class="form-control" id="username" placeholder="Enter username">
@@ -52,8 +50,8 @@
                     </div>
 
                     <div class="form-check d-flex justify-content-center mb-3">
-                        <input type="checkbox" class="form-check-input border border-dark rounded-1 mx-1" id="remember">
-                        <label class="form-check-label" for="remember">remember me</label>
+                        <input type="checkbox" class="form-check-input border border-dark rounded-1" id="remember">
+                        <label class="form-check-label  mx-2" for="remember">remember me</label>
                     </div>
 
                     <button type="submit" id="loginBtn" class="btn btn-login">
